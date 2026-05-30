@@ -19,9 +19,9 @@ export function ContactSection({ dark, accent, accentAlt, surface, surfaceAlt, b
     e.preventDefault();
     if (!validate()) return;
     setStatus("sending");
-    const SERVICE_ID = "TU_SERVICE_ID";
-    const TEMPLATE_ID = "TU_TEMPLATE_ID";
-    const PUBLIC_KEY = "TU_PUBLIC_KEY";
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
     try {
       const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
@@ -35,10 +35,10 @@ export function ContactSection({ dark, accent, accentAlt, surface, surfaceAlt, b
 
   const inp = { background: dark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", border: `1.5px solid ${border}`, borderRadius: 12, padding: "12px 14px", color: text, fontFamily: "'Play', sans-serif", fontSize: "clamp(13px,3vw,14px)", width: "100%", outline: "none", transition: "border-color 0.2s, box-shadow 0.2s", boxSizing: "border-box" };
   const contactLinks = [
-    { icon: <IcMail />, label: tx.contact.email, href: "gabrielmejia5@gmail.com", color: "#6c63ff" },
+    { icon: <IcMail />, label: tx.contact.email, href: "mailto:gabrielmejiasilva5@gmail.com", color: "#6c63ff" },
     { icon: <IcLinkedIn />, label: tx.contact.linkedin, href: "https://www.linkedin.com/in/gabriel-mejia-silva-36a3b4412/?skipRedirect=true", color: "#0A66C2" },
     { icon: <IcGitHub2 />, label: tx.contact.github, href: "https://github.com/gabriel24-lab", color: dark ? "#e0e0e0" : "#181717" },
-    { icon: <IcWhatsApp />, label: "WhatsApp", href: "https://wa.me/573243112795", color: "#25D366" },
+    { icon: <IcWhatsApp />, label: "WhatsApp", href: "https://wa.me/573243112795?text=Hola%20Gabriel%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20contigo%20sobre%20un%20proyecto.", color: "#25D366" },
   ];
   const labelStyle = { fontSize: 12, fontWeight: 600, color: textMuted, marginBottom: 6, display: "block", fontFamily: "'Play', sans-serif", letterSpacing: 0.5 };
 
