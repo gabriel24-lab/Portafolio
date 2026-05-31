@@ -81,7 +81,7 @@ export function SkillsSection({
             let iconColor = tech.color;
             if (dark && isBlack) iconColor = "#ffffff";
             if (!dark && isLightColor) iconColor = tech.color === "#F7DF1E" ? "#b8a800" : tech.color === "#FCC624" ? "#b08a00" : tech.color === "#61DAFB" ? "#0da0c0" : "#2a8a5e";
-            const iconUrl = `https://cdn.simpleicons.org/${tech.slug}/${iconColor.replace("#", "")}`;
+            const iconUrl = tech.iconUrl ?? `https://cdn.simpleicons.org/${tech.slug}/${iconColor.replace("#", "")}`;
             const hoverColor = isBlack ? (dark ? "#888" : "#333") : (isLightColor && !dark ? iconColor : tech.color);
             return (
               <div

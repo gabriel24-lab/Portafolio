@@ -9,7 +9,8 @@
   { name: "PostgreSQL", slug: "postgresql",    color: "#336791" },
   { name: "MongoDB",    slug: "mongodb",       color: "#00ED64" },
   { name: "MySQL",      slug: "mysql",         color: "#00758F" },
-  { name: "SQL Server", slug: "sqlserver",     color: "#D82423" },
+  { name: "SQL Server", slug: "microsoftsqlserver", color: "#CC2927",
+    iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
   { name: "Git",        slug: "git",           color: "#F1502F" },
   { name: "Figma",      slug: "figma",         color: "#F24E1E" },
 ];
