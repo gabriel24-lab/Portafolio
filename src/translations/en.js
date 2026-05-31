@@ -12,9 +12,8 @@ export const en = {
   },
   about: {
     title: "About me",
-    p1: "I'm a Frontend Developer. I specialize in React, Node.js and software architecture, with a particular focus on user experience and performance.",
-    p2: "I have worked on personal projects and projects for the institution where I completed my studies.",
-    p3: "Outside of code, I'm passionate about learning new technologies and the evolution of web development.",
+    p1: "I am a Full-Stack Developer and Analyst passionate about building dynamic user interfaces with React and robust backend architectures using Node.js and SQL. I have developed multiple projects integrating these technologies, focusing on problem-solving, continuous learning, and delivering high-quality software. My goal is to join an innovative team where I can contribute value while continuing to grow professionally.",
+    p2: "I enjoy turning ideas into functional solutions, constantly learning new technologies and taking on challenges that drive my professional growth.",
     stats: [],
   },
   skills: {
