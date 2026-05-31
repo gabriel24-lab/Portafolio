@@ -1,19 +1,6 @@
-import { useRef } from "react";
+﻿import { useRef } from "react";
 import { useIntersection } from "../hooks/useIntersection";
 
-/**
- * AnimSection — wrapper que combina la animación propia (fade+slide)
- * con soporte completo para atributos data-aos de la librería AOS.
- *
- * Props:
- *   - aosAnim   : string  — animación AOS (e.g. "fade-up", "zoom-in", "flip-left")
- *   - aosDuration: number — ms que dura la animación (default: 800)
- *   - aosDelay  : number  — ms de delay antes de arrancar (default: 0)
- *   - aosEasing : string  — easing AOS (default: "ease-out-cubic")
- *   - aosOffset : number  — px antes de que el elemento active AOS
- *   - aosMirror : bool   — si la animación se repite al salir de la vista
- *   - delay     : number — delay en segundos para la anim CSS fallback
- */
 export function AnimSection({
   children,
   className = "",
