@@ -4,7 +4,7 @@ export const es = {
     greeting: "Hola, soy",
     name: "Gabriel Mejia",
     title: "Desarrollador Frontend",
-    subtitle: "Construyo experiencias digitales que importan — con código limpio, arquitectura sólida y pasión por el detalle.",
+    subtitle: "Construyo experiencias digitales que importan, con código limpio, arquitectura sólida y pasión por el detalle.",
     downloadCV: "Descargar CV",
     contact: "Contáctame",
     photoAlt: "Foto de perfil",
@@ -12,12 +12,10 @@ export const es = {
   },
   about: {
     title: "Sobre mí",
-    p1: "Soy un desarrollador Frontend. Me especializo en React, Node.js y arquitecturas, con un enfoque particular en la experiencia de usuario y el rendimiento.",
-    p2: "He trabajado en proyectos personales y proyectos para la institución donde he ejercido mis estudios.",
-    p3: "Fuera del código, soy un apasionado con el aprendizaje de nuevas tecnologías y la evolución del desarrollo web.",
-    stats: [
-
-    ],
+    p1: "Soy un desarrollador frontend. Me especializo en React, Node.js y arquitecturas de software, con un enfoque particular en la experiencia de usuario y el rendimiento.",
+    p2: "He trabajado en proyectos personales y en proyectos para la institución donde he realizado mis estudios.",
+    p3: "Fuera del código, soy un apasionado por el aprendizaje de nuevas tecnologías y por la evolución del desarrollo web.",
+    stats: [],
   },
   skills: {
     title: "Tecnologías",
@@ -25,28 +23,28 @@ export const es = {
     categories: [
       {
         name: "Frontend",
-        icon: "⬡",
+        icon: "◧",
         items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Redux", "GraphQL"],
       },
       {
         name: "Backend",
-        icon: "⬡",
+        icon: "◧",
         items: ["Node.js", "Express", "NestJS", "PostgreSQL", "MongoDB", "Redis", "REST APIs"],
       },
       {
         name: "DevOps & Cloud",
-        icon: "⬡",
+        icon: "◧",
         items: ["AWS", "Docker", "Kubernetes", "CI/CD", "GitHub Actions", "Terraform", "Linux"],
       },
       {
         name: "Herramientas",
-        icon: "⬡",
+        icon: "◧",
         items: ["Git", "Figma", "Jest", "Cypress", "Webpack", "Storybook", "Postman"],
       },
     ],
   },
   experience: {
-    title: "Formación Académica",
+    title: "Formación académica",
     subtitle: "Mi camino en el aprendizaje",
     jobs: [
       {
@@ -63,7 +61,7 @@ export const es = {
         period: "2022 – 2023",
         location: "Colombia",
         description: "Formación técnica en fundamentos de internet, arquitectura y mantenimiento de computadores, hardware, soporte técnico y bases de software.",
-        tags: ["Hardware", "Mantenimiento PC", "Redes", "Soporte Técnico", "Software"],
+        tags: ["Hardware", "Mantenimiento PC", "Redes", "Soporte técnico", "Software"],
       },
     ],
   },
@@ -74,38 +72,37 @@ export const es = {
     items: [
       {
         name: "Parksmart",
-        desc: "Es un sistema de automatización del parqueadero SENA de la entrada y salida de los vehiculos, permite que los guardias registren el acceso mediante código QR que se genera uno personal para cada usuario y solo cuenta con un registro exclusivo para los usuarios SENA.",
+        desc: "Es un sistema de automatización del parqueadero del SENA para la entrada y salida de vehículos. Permite que los guardias registren el acceso mediante un código QR, generado de forma personal para cada usuario, y solo cuenta con un registro exclusivo para usuarios SENA.",
         icon: "bi-p-circle",
         link: "https://parksmart.vercel.app/",
         techs: [
-          { name: "HTML5",      slug: "html5",      color: "#E34F26" },
-          { name: "CSS3",       slug: "css",        color: "#1572B6" },
+          { name: "HTML5", slug: "html5", color: "#E34F26" },
+          { name: "CSS3", slug: "css", color: "#1572B6" },
           { name: "JavaScript", slug: "javascript", color: "#F7DF1E" },
-          { name: "Node.js",    slug: "node.js",    color: "#339933" },
-          { name: "Express",    slug: "express",    color: "#000000" },
+          { name: "Node.js", slug: "node.js", color: "#339933" },
+          { name: "Express", slug: "express", color: "#000000" },
           { name: "PostgreSQL", slug: "postgresql", color: "#336791" },
         ],
         details: {
-          // Agrega tus imágenes aquí: { src: "/ruta/imagen.png", caption: "Descripción opcional" }
           images: [
-            { src: "/screenshots/login.png", caption: "Pantalla de login" },
-            { src: "/screenshots/panel-usuario.png", caption: "Pantalla de panel de usuario" },
-            { src: "/screenshots/mivehiculo.png", caption: "Pantalla de Mi Vehiculo en los usuarios" },
-            { src: "/screenshots/historialusuario.png", caption: "Pantalla de historial de usuario" },
-            { src: "/screenshots/panel-operario.png", caption: "Pantalla de panel de operario" },
-            { src: "/screenshots/scanner-operario.png", caption: "Pantalla de Escaneo de QR" },
-            { src: "/screenshots/panel-superadmin.png", caption: "Pantalla de panel de super admin" },
-            { src: "/screenshots/panel-analisis.png", caption: "Pantalla de panel de analisis" },
+            { src: "/screenshots/login.png", caption: "Pantalla de inicio de sesión" },
+            { src: "/screenshots/panel-usuario.png", caption: "Pantalla del panel de usuario" },
+            { src: "/screenshots/mivehiculo.png", caption: "Pantalla de Mi Vehículo en los usuarios" },
+            { src: "/screenshots/historialusuario.png", caption: "Pantalla del historial del usuario" },
+            { src: "/screenshots/panel-operario.png", caption: "Pantalla del panel de operario" },
+            { src: "/screenshots/scanner-operario.png", caption: "Pantalla de escaneo de QR" },
+            { src: "/screenshots/panel-superadmin.png", caption: "Pantalla del panel de superadministrador" },
+            { src: "/screenshots/panel-analisis.png", caption: "Pantalla del panel de análisis" },
           ],
-          experience: "Desarrollé ParkSmart como proyecto institucional para el Servicio Nacional de Aprendizaje (SENA), participando principalmente en la construcción del frontend y backend de la aplicación. Implementé funcionalidades como autenticación mediante códigos QR, gestión de usuarios y vehículos, control de acceso y despliegue en la nube. Este proyecto fortaleció mis habilidades como desarrollador Full Stack, enfrentándome a desafíos reales y creando soluciones desde cero.",
-          why: "El parqueadero de la institución no contaba con ningún sistema digital para registrar la entrada y salida de vehículos. Los guardias le daban un tipo de ficho a los aprendices, lo cual no aseguraba totalmente la seguridad de sus bicicletas. Parksmart nació para digitalizar ese proceso y poner mas seguridad a la hora de ingresar y salir del parqueadero.",
-          techNotes: "Elegí Node.js + Express para el backend por su ecosistema y la facilidad de integrar librerías de generación de QR. PostgreSQL fue la elección natural para manejar la base de datos relacional de usuarios y registros de acceso. El frontend se construyó en HTML/CSS/JS puro para mantener la simplicidad y compatibilidad.",
+          experience: "Desarrollé ParkSmart como proyecto institucional para el Servicio Nacional de Aprendizaje (SENA), participando principalmente en la construcción del frontend y del backend de la aplicación. Implementé funcionalidades como autenticación mediante códigos QR, gestión de usuarios y vehículos, control de acceso y despliegue en la nube. Este proyecto fortaleció mis habilidades como desarrollador full stack, enfrentándome a desafíos reales y creando soluciones desde cero.",
+          why: "El parqueadero de la institución no contaba con ningún sistema digital para registrar la entrada y salida de vehículos. Los guardias les daban una ficha a los aprendices, lo cual no aseguraba totalmente la seguridad de sus bicicletas. Parksmart nació para digitalizar ese proceso y aportar más seguridad a la hora de ingresar y salir del parqueadero.",
+          techNotes: "Elegí Node.js + Express para el backend por su ecosistema y la facilidad de integrar bibliotecas de generación de QR. PostgreSQL fue la elección natural para manejar la base de datos relacional de usuarios y registros de acceso. El frontend se construyó en HTML/CSS/JS puro para mantener la simplicidad y la compatibilidad.",
           challenges: [
             {
               icon: "bi-shield-lock",
               color: "#6c8eff",
               title: "Autenticación y validación de QR",
-              desc: "El mayor desafío fue garantizar que solo usuarios activos en la BD institucional pudieran generar un QR válido, y que ese código no pudiera ser falsificado ni reutilizado fuera del rango de tiempo permitido.",
+              desc: "El mayor desafío fue garantizar que solo usuarios activos en la base de datos institucional pudieran generar un QR válido, y que ese código no pudiera ser falsificado ni reutilizado fuera del rango de tiempo permitido.",
             },
             {
               icon: "bi-diagram-3",
