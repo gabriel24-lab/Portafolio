@@ -689,7 +689,6 @@ export function ProjectsSection({
       {/* ─── Encabezado ─── */}
       <div data-aos="fade-up" data-aos-duration="700">
         <p style={{ fontFamily: "'Play', sans-serif", fontSize: 12, color: accent, marginBottom: 12, letterSpacing: 2 }}>
-          04. PROJECTS
         </p>
         <h2 style={{ fontSize: "clamp(1rem,3.5vw,2rem)", fontWeight: 800, letterSpacing: "-0.01em", color: text, fontFamily: "'Press Start 2P', cursive", lineHeight: 1.4 }}>
           {tx.projects.title}

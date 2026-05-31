@@ -22,7 +22,7 @@ export function AboutSection({
 
       {/* Header */}
       <div data-aos="fade-down" data-aos-duration="700">
-        <p style={{ fontFamily: "'Play', sans-serif", fontSize: 12, color: accent, marginBottom: 12, letterSpacing: 2 }}>01. ABOUT_ME</p>
+        <p style={{ fontFamily: "'Play', sans-serif", fontSize: 12, color: accent, marginBottom: 12, letterSpacing: 2 }}></p>
         <h2 style={{ fontSize: "clamp(1rem,3.5vw,2rem)", fontWeight: 800, letterSpacing: "-0.01em", color: text, marginBottom: 48, fontFamily: "'Press Start 2P', cursive", lineHeight: 1.4 }}>{tx.about.title}</h2>
       </div>
 

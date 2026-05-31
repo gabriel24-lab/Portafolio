@@ -22,7 +22,7 @@ export function ExperienceSection({
 
       {/* Header */}
       <div data-aos="fade-right" data-aos-duration="700">
-        <p style={{ fontFamily: "'Play', sans-serif", fontSize: 12, color: accent, marginBottom: 12, letterSpacing: 2 }}>03. EDUCATION</p>
+        <p style={{ fontFamily: "'Play', sans-serif", fontSize: 12, color: accent, marginBottom: 12, letterSpacing: 2 }}></p>
         <h2 style={{ fontSize: "clamp(1rem,3.5vw,2rem)", fontWeight: 800, letterSpacing: "-0.01em", color: text, fontFamily: "'Press Start 2P', cursive", lineHeight: 1.4 }}>{tx.experience.title}</h2>
         <p style={{ color: textMuted, fontSize: "clamp(13px,2vw,15px)", marginTop: 8, marginBottom: 48 }}>{tx.experience.subtitle}</p>
       </div>
