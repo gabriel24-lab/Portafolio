@@ -126,19 +126,19 @@ export function ContactSection({ dark, accent, accentAlt, surface, surfaceAlt, b
               <div className="form-2col">
                 <div>
                   <label style={labelStyle}>{tx.contact.formName}</label>
-                  <input className={`contact-input${errors.name ? " err" : ""}`} style={inp} type="text" placeholder="Tu nombre" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
-                  {errors.name && <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>Requerido</p>}
+                  <input className={`contact-input${errors.name ? " err" : ""}`} style={inp} type="text" placeholder={tx.contact.placeholderName} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+                  {errors.name && <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>{tx.contact.errorRequired}</p>}
                 </div>
                 <div>
                   <label style={labelStyle}>{tx.contact.formEmail}</label>
-                  <input className={`contact-input${errors.email ? " err" : ""}`} style={inp} type="email" placeholder="tu@correo.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
-                  {errors.email && <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>Correo inválido</p>}
+                  <input className={`contact-input${errors.email ? " err" : ""}`} style={inp} type="email" placeholder={tx.contact.placeholderEmail} value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
+                  {errors.email && <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>{tx.contact.errorEmail}</p>}
                 </div>
               </div>
               <div style={{ marginBottom: 18 }}>
                 <label style={labelStyle}>{tx.contact.formMessage}</label>
-                <textarea className={`contact-input${errors.message ? " err" : ""}`} style={{ ...inp, minHeight: 120, resize: "vertical", lineHeight: 1.7 }} placeholder="Cuéntame sobre tu proyecto..." value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} />
-                {errors.message && <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>Mínimo 10 caracteres</p>}
+                <textarea className={`contact-input${errors.message ? " err" : ""}`} style={{ ...inp, minHeight: 120, resize: "vertical", lineHeight: 1.7 }} placeholder={tx.contact.placeholderMessage} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} />
+                {errors.message && <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>{tx.contact.errorMessage}</p>}
               </div>
               <button type="submit" disabled={status === "sending"} style={{ width: "100%", padding: "14px", background: status === "success" ? "#00c896" : status === "error" ? "#ff6b6b" : accent, color: "#fff", border: "none", borderRadius: 12, fontFamily: "'Play', sans-serif", fontWeight: 700, fontSize: "clamp(13px,3vw,15px)", cursor: status === "sending" ? "not-allowed" : "pointer", transition: "all 0.3s", opacity: status === "sending" ? 0.7 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
                 {status === "idle" && <>{tx.contact.formSend} <i className="bi bi-send" /></>}
