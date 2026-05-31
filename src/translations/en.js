@@ -1,5 +1,5 @@
 export const en = {
-  nav: { about: "About me", skills: "Skills", experience: "Experience", projects: "Projects", contact: "Contact" },
+  nav: { about: "About me", skills: "Skills", experience: "Studies", projects: "Projects", contact: "Contact" },
   hero: {
     greeting: "Hi, I'm",
     name: "Gabriel Mejia",
