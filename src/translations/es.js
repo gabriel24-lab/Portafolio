@@ -74,7 +74,7 @@ export const es = {
     items: [
       {
         name: "Parksmart",
-        desc: "Sistema de automatización de entrada y salida de vehículos del parqueadero del SENA. Permite a celadores y guardias registrar el acceso mediante códigos QR personales. Solo pueden registrarse personas que estén en la base de datos institucional del SENA.",
+        desc: "Es un sistema de automatización del parqueadero SENA de la entrada y salida de los vehiculos, permite que los guardias registren el acceso mediante código QR que se genera uno personal para cada usuario y solo cuenta con un registro exclusivo para los usuarios SENA.",
         icon: "bi-p-circle",
         link: "https://parksmart.vercel.app/",
         techs: [
@@ -97,7 +97,7 @@ export const es = {
             { src: "/screenshots/panel-superadmin.png", caption: "Pantalla de panel de super admin" },
             { src: "/screenshots/panel-analisis.png", caption: "Pantalla de panel de analisis" },
           ],
-          experience: "Desarrollé Parksmart como proyecto institucional para la institución donde ejerci mi estudio como Tecnologo que fue el Servicio De Aprendizaje Nacional (SENA). Fue mi primera experiencia construyendo un sistema fullstack completo, desde el diseño de la base de datos hasta la interfaz de usuario. Aprendí mucho sobre autenticación con QR, manejo de sesiones y despliegue en la nube.",
+          experience: "Desarrollé ParkSmart como proyecto institucional para el Servicio Nacional de Aprendizaje (SENA), participando principalmente en la construcción del frontend y backend de la aplicación. Implementé funcionalidades como autenticación mediante códigos QR, gestión de usuarios y vehículos, control de acceso y despliegue en la nube. Este proyecto fortaleció mis habilidades como desarrollador Full Stack, enfrentándome a desafíos reales y creando soluciones desde cero.",
           why: "El parqueadero de la institución no contaba con ningún sistema digital para registrar la entrada y salida de vehículos. Los guardias le daban un tipo de ficho a los aprendices, lo cual no aseguraba totalmente la seguridad de sus bicicletas. Parksmart nació para digitalizar ese proceso y poner mas seguridad a la hora de ingresar y salir del parqueadero.",
           techNotes: "Elegí Node.js + Express para el backend por su ecosistema y la facilidad de integrar librerías de generación de QR. PostgreSQL fue la elección natural para manejar la base de datos relacional de usuarios y registros de acceso. El frontend se construyó en HTML/CSS/JS puro para mantener la simplicidad y compatibilidad.",
           challenges: [

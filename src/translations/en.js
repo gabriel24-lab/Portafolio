@@ -72,7 +72,7 @@ export const en = {
     items: [
       {
         name: "Parksmart",
-        desc: "Vehicle entry and exit automation system for the SENA parking lot. Allows security guards to register access using personal QR codes. Only people registered in the SENA institutional database can use it.",
+        desc: "It is an automated system for the SENA parking lot, controlling the entry and exit of vehicles. It allows guards to register access using a QR code, which is generated individually for each user and has an exclusive registry for SENA users.",
         icon: "bi-p-circle",
         link: "https://parksmart.vercel.app/",
         techs: [
