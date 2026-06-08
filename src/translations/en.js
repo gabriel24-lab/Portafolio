@@ -3,8 +3,8 @@ export const en = {
   hero: {
     greeting: "Hi, I'm",
     name: "Gabriel Mejia",
-    title: "Frontend Developer",
-    subtitle: "I build digital experiences that matter — with clean code, solid architecture and a passion for detail.",
+    title: "Software developer",
+    subtitle: "Passionate about continuous learning and creating technology solutions that deliver real impact.",
     downloadCV: "Download CV",
     contact: "Contact me",
     photoAlt: "Profile photo",
@@ -12,7 +12,7 @@ export const en = {
   },
   about: {
     title: "About me",
-    p1: "Frontend Web Developer specialized in building dynamic and responsive user interfaces with React. I focus on creating engaging user experiences, optimizing performance, and developing scalable web applications. I complement my frontend expertise with knowledge of Node.js and SQL databases, allowing me to collaborate effectively on full-stack projects. Passionate about continuous learning and creating technology solutions that deliver real impact.",
+    p1: "Frontend Web Developer specialized in building dynamic and responsive user interfaces with React. I focus on creating engaging user experiences, optimizing performance, and developing scalable web applications. I complement my frontend expertise with knowledge of Node.js and SQL databases, allowing me to collaborate effectively on full-stack projects.",
     p2: "I enjoy turning ideas into functional solutions, constantly learning new technologies and taking on challenges that drive my professional growth.",
     stats: [],
   },
