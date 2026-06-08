@@ -18,7 +18,7 @@ export const en = {
   },
   skills: {
     title: "Technologies",
-    subtitle: "Tech stack I use to build real solutions",
+    subtitle: "Tech stack",
     categories: [
       {
         name: "Frontend",

@@ -18,7 +18,7 @@ export const es = {
   },
   skills: {
     title: "Tecnologías",
-    subtitle: "Stack tecnológico con el que construyo soluciones reales",
+    subtitle: "Stack tecnológico",
     categories: [
       {
         name: "Frontend",
