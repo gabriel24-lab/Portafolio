@@ -12,7 +12,7 @@ export const es = {
   },
   about: {
     title: "Sobre mí",
-    p1: "Soy un Desarrollador y Analista Full-Stack apasionado por crear interfaces dinámicas con React y arquitecturas backend robustas con Node.js y SQL. He realizado múltiples proyectos integrando estas tecnologías, enfocándome en la resolución de problemas, el aprendizaje continuo y la entrega de software de alta calidad. Mi objetivo es unirme a un equipo innovador para aportar valor y seguir creciendo profesionalmente.",
+    p1: "Desarrollador Web especializado en frontend, con experiencia en la construcción de interfaces dinámicas y responsivas utilizando React. Me enfoco en crear experiencias de usuario atractivas, optimizar el rendimiento y desarrollar aplicaciones web escalables. Complemento mis habilidades con conocimientos en Node.js y bases de datos SQL, permitiéndome colaborar eficazmente en proyectos full-stack. Apasionado por el aprendizaje continuo y la creación de soluciones tecnológicas que generen impacto.",
     p2: "Disfruto transformar ideas en soluciones funcionales, aprendiendo constantemente nuevas tecnologías y enfrentando desafíos que impulsen mi crecimiento profesional.",
     stats: [],
   },

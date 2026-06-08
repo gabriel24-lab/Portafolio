@@ -12,7 +12,7 @@ export const en = {
   },
   about: {
     title: "About me",
-    p1: "I am a Full-Stack Developer and Analyst passionate about building dynamic user interfaces with React and robust backend architectures using Node.js and SQL. I have developed multiple projects integrating these technologies, focusing on problem-solving, continuous learning, and delivering high-quality software. My goal is to join an innovative team where I can contribute value while continuing to grow professionally.",
+    p1: "Frontend Web Developer specialized in building dynamic and responsive user interfaces with React. I focus on creating engaging user experiences, optimizing performance, and developing scalable web applications. I complement my frontend expertise with knowledge of Node.js and SQL databases, allowing me to collaborate effectively on full-stack projects. Passionate about continuous learning and creating technology solutions that deliver real impact.",
     p2: "I enjoy turning ideas into functional solutions, constantly learning new technologies and taking on challenges that drive my professional growth.",
     stats: [],
   },
