@@ -15,8 +15,71 @@ export function SkillsSection({
   const cardBg = dark ? "rgba(11,20,13,0.78)" : "rgba(255,255,255,0.80)";
   const cardBgHover = dark ? "rgba(18,30,20,0.92)" : "rgba(255,255,255,0.95)";
 
+  const focusTechs = TECHS.filter((t) => t.focus);
+  const complementaryTechs = TECHS.filter((t) => !t.focus);
+
+  const renderCard = (tech, i, baseDelay = 0) => {
+    const isBlack = tech.color === "#000000" || tech.color === "#181717";
+    const isLightColor = ["#F7DF1E", "#FCC624", "#61DAFB", "#4FC08D"].includes(tech.color);
+    let iconColor = tech.color;
+    if (dark && isBlack) iconColor = "#ffffff";
+    if (!dark && isLightColor)
+      iconColor =
+        tech.color === "#F7DF1E"
+          ? "#b8a800"
+          : tech.color === "#FCC624"
+          ? "#b08a00"
+          : tech.color === "#61DAFB"
+          ? "#0da0c0"
+          : "#2a8a5e";
+    const iconUrl =
+      tech.iconUrl ??
+      `https://cdn.simpleicons.org/${tech.slug}/${iconColor.replace("#", "")}`;
+    const hoverColor = isBlack
+      ? dark
+        ? "#888"
+        : "#333"
+      : isLightColor && !dark
+      ? iconColor
+      : tech.color;
+    return (
+      <div
+        key={tech.name}
+        className="tech-card2"
+        style={{ "--tc": hoverColor }}
+        title={tech.name}
+        data-aos="zoom-in"
+        data-aos-duration="500"
+        data-aos-delay={Math.min((i + baseDelay) * 40, 600)}
+      >
+        <div className="ti">
+          <img
+            src={iconUrl}
+            alt={tech.name}
+            width={40}
+            height={40}
+            style={{ objectFit: "contain", display: "block" }}
+            onError={(e) => {
+              e.target.style.display = "none";
+              e.target.parentNode.innerHTML = `<span style="font-size:24px;line-height:1">⬡</span>`;
+            }}
+          />
+        </div>
+        <span className="tname">{tech.name}</span>
+      </div>
+    );
+  };
+
   return (
-    <section id="skills" style={{ padding: "80px clamp(16px,6vw,140px)", background: bg, position: "relative", overflow: "hidden" }}>
+    <section
+      id="skills"
+      style={{
+        padding: "80px clamp(16px,6vw,140px)",
+        background: bg,
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
       <ParticleCanvas dark={dark} accent={accent} accentAlt={accentAlt} />
       <style>{`
         .tech-card2 {
@@ -51,10 +114,54 @@ export function SkillsSection({
           transition: color 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
         }
         .tech-card2:hover .tname { color: var(--tc, ${accent}); }
+
+        /* focus cards get a subtle accent glow on border */
+        .tech-card2.focus-card {
+          border-color: ${dark ? "rgba(255,255,255,0.13)" : "rgba(0,0,0,0.13)"};
+        }
+        .tech-card2.focus-card:hover {
+          box-shadow: 0 14px 36px var(--tc, ${accent})30, 0 0 0 1.5px var(--tc, ${accent})40;
+        }
+
         .skills-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
           gap: 10px;
+        }
+        .skills-category-label {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 14px;
+          margin-top: 36px;
+        }
+        .skills-category-label:first-of-type {
+          margin-top: 0;
+        }
+        .skills-category-label .cat-line {
+          flex: 1;
+          height: 1px;
+          background: ${dark ? "rgba(255,255,255,0.09)" : "rgba(0,0,0,0.09)"};
+        }
+        .skills-category-label .cat-badge {
+          font-family: 'Play', sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          padding: 4px 14px;
+          border-radius: 20px;
+          white-space: nowrap;
+        }
+        .cat-badge.focus-badge {
+          color: ${accent};
+          border: 1px solid ${accent}55;
+          background: ${dark ? accent + "18" : accent + "12"};
+        }
+        .cat-badge.comp-badge {
+          color: ${textMuted};
+          border: 1px solid ${dark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)"};
+          background: ${dark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.04)"};
         }
         @media(max-width:480px){
           .skills-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; }
@@ -73,34 +180,33 @@ export function SkillsSection({
           <p style={{ color: textMuted, fontSize: "clamp(13px,2vw,15px)", marginTop: 8, marginBottom: 40 }}>{tx.skills.subtitle}</p>
         </div>
 
-        {/* Grid de tecnologías */}
-        <div className="skills-grid">
-          {TECHS.map((tech, i) => {
-            const isBlack = tech.color === "#000000" || tech.color === "#181717";
-            const isLightColor = ["#F7DF1E", "#FCC624", "#61DAFB", "#4FC08D"].includes(tech.color);
-            let iconColor = tech.color;
-            if (dark && isBlack) iconColor = "#ffffff";
-            if (!dark && isLightColor) iconColor = tech.color === "#F7DF1E" ? "#b8a800" : tech.color === "#FCC624" ? "#b08a00" : tech.color === "#61DAFB" ? "#0da0c0" : "#2a8a5e";
-            const iconUrl = tech.iconUrl ?? `https://cdn.simpleicons.org/${tech.slug}/${iconColor.replace("#", "")}`;
-            const hoverColor = isBlack ? (dark ? "#888" : "#333") : (isLightColor && !dark ? iconColor : tech.color);
-            return (
-              <div
-                key={i}
-                className="tech-card2"
-                style={{ "--tc": hoverColor }}
-                title={tech.name}
-                data-aos="zoom-in"
-                data-aos-duration="500"
-                data-aos-delay={Math.min(i * 40, 500)}
-              >
-                <div className="ti">
-                  <img src={iconUrl} alt={tech.name} width={40} height={40} style={{ objectFit: "contain", display: "block" }} onError={e => { e.target.style.display = "none"; e.target.parentNode.innerHTML = `<span style="font-size:24px;line-height:1">⬡</span>`; }} />
-                </div>
-                <span className="tname">{tech.name}</span>
-              </div>
-            );
-          })}
+        {/* Enfoque */}
+        <div
+          className="skills-category-label"
+          data-aos="fade-right"
+          data-aos-duration="600"
+        >
+          <span className="cat-badge focus-badge">{tx.skills.focusLabel}</span>
+          <span className="cat-line" />
         </div>
+        <div className="skills-grid" style={{ marginBottom: 0 }}>
+          {focusTechs.map((tech, i) => renderCard(tech, i, 0))}
+        </div>
+
+        {/* Complementarias */}
+        <div
+          className="skills-category-label"
+          data-aos="fade-right"
+          data-aos-duration="600"
+          data-aos-delay="80"
+        >
+          <span className="cat-badge comp-badge">{tx.skills.complementaryLabel}</span>
+          <span className="cat-line" />
+        </div>
+        <div className="skills-grid">
+          {complementaryTechs.map((tech, i) => renderCard(tech, i, focusTechs.length))}
+        </div>
+
       </div>
     </section>
   );

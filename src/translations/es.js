@@ -19,6 +19,8 @@ export const es = {
   skills: {
     title: "Tecnologías",
     subtitle: "Stack tecnológico",
+    focusLabel: "Enfoque",
+    complementaryLabel: "Complementarias",
     categories: [
       {
         name: "Frontend",
