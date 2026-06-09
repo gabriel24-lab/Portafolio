@@ -70,6 +70,28 @@ export const es = {
     title: "Proyectos",
     subtitle: "Algunos de mis trabajos más representativos",
     cta: "Ver proyecto",
+    seeDetails: "Ver detalles",
+    inProduction: "En producción",
+    hoverHint: "Hover para ver el stack",
+    tapHint: "Tap para ver el stack",
+    techStack: "Stack tecnológico",
+    modal: {
+      projectLabel: "PROYECTO",
+      tabs: {
+        overview: "Visión general",
+        why: "¿Por qué?",
+        tech: "Tecnologías",
+        challenges: "Desafíos",
+      },
+      descLabel: "DESCRIPCIÓN",
+      experienceLabel: "MI EXPERIENCIA",
+      inProduction: "En producción",
+      viewProject: "Ver proyecto",
+      motivation: "Motivación del proyecto",
+      comingSoon: "Próximamente...",
+      fullStack: "STACK COMPLETO",
+      technicalChallenges: "DESAFÍOS TÉCNICOS",
+    },
     items: [
       {
         name: "Parksmart",

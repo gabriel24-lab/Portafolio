@@ -138,7 +138,7 @@ function techIconUrl(tech, dark) {
 }
 
 /* ─── Modal de detalles del proyecto ─── */
-function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, surface, onClose }) {
+function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, surface, tx, onClose }) {
   const [activeImg, setActiveImg] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const modalRef = useRef(null);
@@ -165,11 +165,12 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
   const tabActiveBg = dark ? `${accent}22` : `${accent}18`;
 
   const [activeTab, setActiveTab] = useState("overview");
+  const m = tx.projects.modal;
   const tabs = [
-    { id: "overview", label: "Visión general", icon: "bi-grid-1x2" },
-    { id: "why",      label: "¿Por qué?",      icon: "bi-lightbulb" },
-    { id: "tech",     label: "Tecnologías",    icon: "bi-cpu" },
-    { id: "challenges", label: "Desafíos",     icon: "bi-exclamation-diamond" },
+    { id: "overview", label: m.tabs.overview,   icon: "bi-grid-1x2" },
+    { id: "why",      label: m.tabs.why,        icon: "bi-lightbulb" },
+    { id: "tech",     label: m.tabs.tech,       icon: "bi-cpu" },
+    { id: "challenges", label: m.tabs.challenges, icon: "bi-exclamation-diamond" },
   ];
 
   return (
@@ -272,7 +273,7 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
               <i className={`bi ${proj.icon}`} style={{ fontSize: 20, color: accent }} />
             </div>
             <div>
-              <p style={{ fontSize: 10, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 2 }}>PROYECTO</p>
+              <p style={{ fontSize: 10, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 2 }}>{m.projectLabel}</p>
               <h2 style={{ fontSize: "clamp(16px,4vw,22px)", fontWeight: 800, color: text, fontFamily: "'Press Start 2P',cursive", lineHeight: 1.2 }}>{proj.name}</h2>
             </div>
           </div>
@@ -400,7 +401,7 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
                 border: `1px solid ${border}40`,
                 background: dark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)",
               }}>
-                <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 10 }}>DESCRIPCIÓN</p>
+                <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 10 }}>{m.descLabel}</p>
                 <p style={{ fontSize: "clamp(13px,2vw,14px)", lineHeight: 1.85, color: textMuted }}>{proj.desc}</p>
               </div>
 
@@ -411,7 +412,7 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
                   border: `1px solid ${accent}30`,
                   background: dark ? `${accent}08` : `${accent}06`,
                 }}>
-                  <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 10 }}>MI EXPERIENCIA</p>
+                  <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 10 }}>{m.experienceLabel}</p>
                   <p style={{ fontSize: "clamp(13px,2vw,14px)", lineHeight: 1.85, color: text }}>{experience}</p>
                 </div>
               )}
@@ -425,7 +426,7 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
                   border: `1px solid ${accent}35`,
                 }}>
                   <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4CAF50", boxShadow: "0 0 6px #4CAF5088", display: "inline-block" }} />
-                  En producción
+                  {m.inProduction}
                 </div>
                 <a href={proj.link} target="_blank" rel="noopener noreferrer" style={{
                   display: "inline-flex", alignItems: "center", gap: 8,
@@ -435,7 +436,7 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
                   fontSize: 12, textDecoration: "none", letterSpacing: "0.05em",
                   boxShadow: `0 4px 20px ${accent}50`,
                 }}>
-                  Ver proyecto <i className="bi bi-arrow-up-right" />
+                  {m.viewProject} <i className="bi bi-arrow-up-right" />
                 </a>
               </div>
             </div>
@@ -454,10 +455,10 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
                   <div style={{ width: 40, height: 40, borderRadius: 12, background: `${accent}20`, border: `1px solid ${accent}40`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <i className="bi bi-lightbulb-fill" style={{ color: "#FFD700", fontSize: 18 }} />
                   </div>
-                  <p style={{ fontSize: "clamp(13px,3vw,15px)", fontWeight: 700, color: text, fontFamily: "'Play',sans-serif" }}>Motivación del proyecto</p>
+                  <p style={{ fontSize: "clamp(13px,3vw,15px)", fontWeight: 700, color: text, fontFamily: "'Play',sans-serif" }}>{m.motivation}</p>
                 </div>
                 <p style={{ fontSize: "clamp(13px,2vw,14px)", lineHeight: 2, color: textMuted }}>
-                  {why || "Próximamente..."}
+                  {why || m.comingSoon}
                 </p>
               </div>
             </div>
@@ -466,7 +467,7 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
           {/* TAB: tech */}
           {activeTab === "tech" && (
             <div style={{ animation: "slideUp 0.35s ease" }}>
-              <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 20 }}>STACK COMPLETO</p>
+              <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 20 }}>{m.fullStack}</p>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(110px,1fr))", gap: 12 }}>
                 {proj.techs.map((tech, i) => {
                   const isBlack = tech.color === "#000000" || tech.color === "#181717";
@@ -503,9 +504,9 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
           {/* TAB: challenges */}
           {activeTab === "challenges" && (
             <div style={{ display: "flex", flexDirection: "column", gap: 14, animation: "slideUp 0.35s ease" }}>
-              <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 6 }}>DESAFÍOS TÉCNICOS</p>
+              <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 6 }}>{m.technicalChallenges}</p>
               {challenges.length === 0 ? (
-                <p style={{ color: textMuted, fontSize: 14 }}>Próximamente...</p>
+                <p style={{ color: textMuted, fontSize: 14 }}>{m.comingSoon}</p>
               ) : challenges.map((ch, i) => (
                 <div key={i} className="challenge-card" style={{ animationDelay: `${i*80}ms` }}>
                   <div style={{
@@ -735,6 +736,7 @@ export function ProjectsSection({
           textMuted={textMuted}
           border={border}
           surface={surface}
+          tx={tx}
           onClose={() => setModalProj(null)}
         />
       )}
@@ -772,17 +774,17 @@ function TapFlipCard({ proj, dark, accent, accentAlt, text, textMuted, tx, onOpe
             <h3 style={{ fontWeight: 800, fontSize: "clamp(16px,4vw,20px)", marginBottom: 10, color: text, letterSpacing: "-0.02em" }}>{proj.name}</h3>
             <p style={{ fontSize: "clamp(12px,3vw,13px)", lineHeight: 1.8, color: textMuted }}>{proj.desc}</p>
           </div>
-          <div className="ps-badge"><span className="ps-dot" />En producción</div>
-          <div className="ps-hint"><i className="bi bi-arrow-repeat" style={{ fontSize: 11 }} />Hover para ver el stack</div>
+          <div className="ps-badge"><span className="ps-dot" />{tx.projects.inProduction}</div>
+          <div className="ps-hint"><i className="bi bi-arrow-repeat" style={{ fontSize: 11 }} />{tx.projects.hoverHint}</div>
           <div className="ps-tap-hint" style={{ position: "absolute", bottom: 11, right: 15, fontSize: "9.5px", fontFamily: "'Play', sans-serif", color: textMuted, letterSpacing: "0.05em", alignItems: "center", gap: 4, opacity: 0.5, pointerEvents: "none" }}>
-            <i className="bi bi-hand-index" style={{ fontSize: 11 }} />Tap para ver el stack
+            <i className="bi bi-hand-index" style={{ fontSize: 11 }} />{tx.projects.tapHint}
           </div>
         </div>
 
         {/* ═══ DORSO ═══ */}
         <div className="ps-face ps-back">
           <div>
-            <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: accent, fontFamily: "'Play', sans-serif", marginBottom: 2 }}>Stack tecnológico</p>
+            <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: accent, fontFamily: "'Play', sans-serif", marginBottom: 2 }}>{tx.projects.techStack}</p>
             <p style={{ fontSize: "clamp(14px,4vw,17px)", fontWeight: 800, color: text, fontFamily: "'Play', sans-serif" }}>{proj.name}</p>
           </div>
 
@@ -802,7 +804,7 @@ function TapFlipCard({ proj, dark, accent, accentAlt, text, textMuted, tx, onOpe
               onClick={(e) => { e.stopPropagation(); onOpenDetails(); }}
             >
               <i className="bi bi-layout-text-window-reverse" style={{ fontSize: 13 }} />
-              Ver detalles
+              {tx.projects.seeDetails}
             </button>
             <a
               className="ps-cta"

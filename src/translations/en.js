@@ -70,6 +70,28 @@ export const en = {
     title: "Projects",
     subtitle: "Some of my most representative work",
     cta: "View project",
+    seeDetails: "See details",
+    inProduction: "In production",
+    hoverHint: "Hover to see the stack",
+    tapHint: "Tap to see the stack",
+    techStack: "Tech stack",
+    modal: {
+      projectLabel: "PROJECT",
+      tabs: {
+        overview: "Overview",
+        why: "Why?",
+        tech: "Technologies",
+        challenges: "Challenges",
+      },
+      descLabel: "DESCRIPTION",
+      experienceLabel: "MY EXPERIENCE",
+      inProduction: "In production",
+      viewProject: "View project",
+      motivation: "Project motivation",
+      comingSoon: "Coming soon...",
+      fullStack: "FULL STACK",
+      technicalChallenges: "TECHNICAL CHALLENGES",
+    },
     items: [
       {
         name: "Parksmart",
