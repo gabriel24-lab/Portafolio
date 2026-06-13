@@ -58,6 +58,7 @@ export function SkillsSection({
             alt={tech.name}
             width={40}
             height={40}
+            loading="lazy"
             style={{ objectFit: "contain", display: "block" }}
             onError={(e) => {
               e.target.style.display = "none";
@@ -73,6 +74,7 @@ export function SkillsSection({
   return (
     <section
       id="skills"
+      aria-label="Habilidades"
       style={{
         padding: "80px clamp(16px,6vw,140px)",
         background: bg,

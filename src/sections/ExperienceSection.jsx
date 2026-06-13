@@ -9,7 +9,7 @@ export function ExperienceSection({
   tx,
 }) {
   return (
-    <section id="experience" style={{ padding: "80px clamp(16px,6vw,140px)" }}>
+    <section id="experience" aria-label="Experiencia" style={{ padding: "80px clamp(16px,6vw,140px)" }}>
       <style>{`
         @media(max-width:768px){
           .exp-item { gap: 16px !important; }

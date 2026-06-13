@@ -15,7 +15,7 @@ export function HeroSection({
   scrollTo,
 }) {
   return (
-    <section id="hero" style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "80px clamp(16px,6vw,140px) 60px", position: "relative", overflow: "hidden" }}>
+    <section id="hero" aria-label="Inicio" style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "80px clamp(16px,6vw,140px) 60px", position: "relative", overflow: "hidden" }}>
       <style>{`
         @media(max-width:768px){
           #hero { padding-top: 90px !important; padding-bottom: 48px !important; min-height: 100svh !important; }
@@ -51,7 +51,7 @@ export function HeroSection({
             <div style={{ position: "absolute", inset: -8, borderRadius: "50%", background: `conic-gradient(${accent}, ${accentAlt}, ${accent})`, animation: "gradient-shift 4s linear infinite", backgroundSize: "200% 200%", zIndex: 0 }} />
             <div style={{ position: "absolute", inset: -2, borderRadius: "50%", background: bg, zIndex: 1 }} />
             <div className="hero-photo" style={{ position: "relative", zIndex: 2, width: 200, height: 200, borderRadius: "50%", overflow: "hidden", background: surfaceAlt, display: "flex", alignItems: "center", justifyContent: "center", border: `3px solid ${surface}` }}>
-              {photo ? (<img src={photo} alt={tx.hero.photoAlt} style={{ width: "100%", height: "100%", objectFit: "cover" }} />) : (<div style={{ fontSize: 80, lineHeight: 1 }}>🧑‍💻</div>)}
+              {photo ? (<img src={photo} alt={tx.hero.photoAlt} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />) : (<div style={{ fontSize: 80, lineHeight: 1 }}>🧑‍💻</div>)}
             </div>
             <div style={{ position: "absolute", inset: -20, borderRadius: "50%", border: `1px solid ${accent}30`, zIndex: 0, animation: "pulse-ring 2.5s ease-out infinite" }} />
           </div>

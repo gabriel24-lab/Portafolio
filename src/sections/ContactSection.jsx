@@ -43,7 +43,7 @@ export function ContactSection({ dark, accent, accentAlt, surface, surfaceAlt, b
   const labelStyle = { fontSize: 12, fontWeight: 600, color: textMuted, marginBottom: 6, display: "block", fontFamily: "'Play', sans-serif", letterSpacing: 0.5 };
 
   return (
-    <section id="contact" style={{ padding: "80px clamp(16px,6vw,140px)" }}>
+    <section id="contact" aria-label="Contacto" style={{ padding: "80px clamp(16px,6vw,140px)" }}>
       <style>{`
         .contact-input:focus { border-color: ${accent} !important; box-shadow: 0 0 0 3px ${accent}18 !important; }
         .contact-input.err { border-color: #ff6b6b !important; }

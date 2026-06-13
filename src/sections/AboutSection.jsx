@@ -11,7 +11,7 @@ export function AboutSection({
   tx,
 }) {
   return (
-    <section id="about" style={{ padding: "80px clamp(16px,6vw,140px)" }}>
+    <section id="about" aria-label="Sobre mí" style={{ padding: "80px clamp(16px,6vw,140px)" }}>
       <style>{`
         @media(max-width:768px){
           .about-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -41,7 +41,7 @@ export function AboutSection({
         <div data-aos="fade-left" data-aos-duration="900" data-aos-delay="250">
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <div className="about-img" style={{ width: "100%", maxWidth: 420, borderRadius: 30, overflow: "hidden", border: `1px solid ${border}`, background: surface, boxShadow: `0 0 40px ${accent}22` }}>
-              <img src={miFoto} alt="Foto de perfil" style={{ width: "100%", display: "block", objectFit: "cover" }} />
+              <img src={miFoto} alt="Foto de perfil" loading="lazy" style={{ width: "100%", display: "block", objectFit: "cover" }} />
             </div>
           </div>
         </div>

@@ -50,6 +50,7 @@ function Lightbox({ images, startIndex, onClose }) {
         key={current}
         src={images[current]?.src}
         alt={images[current]?.caption || `Imagen ${current + 1}`}
+        loading="lazy"
         onClick={e => e.stopPropagation()}
         style={{
           maxWidth: "90vw", maxHeight: "85vh",
@@ -335,6 +336,7 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
                     <img
                       src={images[activeImg]?.src}
                       alt={images[activeImg]?.caption || proj.name}
+                      loading="lazy"
                       style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                       onError={e => { e.target.style.display = "none"; }}
                     />
@@ -373,11 +375,12 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
                           <img
                             src={img.src}
                             alt={img.caption || `Imagen ${i+1}`}
+                            loading="lazy"
                             className="img-thumb"
                           />
                           {/* Zoom tooltip al pasar el mouse */}
                           <div className="img-thumb-zoom">
-                            <img src={img.src} alt={img.caption || `Imagen ${i+1}`} />
+                            <img src={img.src} alt={img.caption || `Imagen ${i+1}`} loading="lazy" />
                           </div>
                         </div>
                       ))}
@@ -487,7 +490,7 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
                         transition: "all 0.2s", animation: `slideUp 0.3s ease ${i*60}ms both`,
                       }}
                     >
-                      <img src={iconUrl} alt={tech.name} width={36} height={36} style={{ objectFit: "contain" }} onError={e => { e.target.style.display = "none"; }} />
+                      <img src={iconUrl} alt={tech.name} width={36} height={36} loading="lazy" style={{ objectFit: "contain" }} onError={e => { e.target.style.display = "none"; }} />
                       <span style={{ fontSize: 11, fontWeight: 700, color: textMuted, fontFamily: "'Play',sans-serif", textAlign: "center" }}>{tech.name}</span>
                     </div>
                   );
@@ -552,7 +555,7 @@ export function ProjectsSection({
     : "linear-gradient(145deg,rgba(245,255,247,0.92) 0%,rgba(232,248,235,0.92) 100%)";
 
   return (
-    <section id="projects" style={{ padding: "80px clamp(16px,6vw,140px)", background: bg }}>
+    <section id="projects" aria-label="Proyectos" style={{ padding: "80px clamp(16px,6vw,140px)", background: bg }}>
       <style>{`
         .ps-scene {
           width: min(380px, 92vw);
@@ -791,7 +794,7 @@ function TapFlipCard({ proj, dark, accent, accentAlt, text, textMuted, tx, onOpe
           <div className="ps-tech-grid">
             {proj.techs.map((tech, ti) => (
               <div key={ti} className="ps-chip">
-                <img src={techIconUrl(tech, dark)} alt={tech.name} onError={e => { e.target.style.display = "none"; }} />
+                <img src={techIconUrl(tech, dark)} alt={tech.name} loading="lazy" onError={e => { e.target.style.display = "none"; }} />
                 <span className="ps-chip-name">{tech.name}</span>
               </div>
             ))}
