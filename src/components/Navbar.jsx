@@ -1,5 +1,5 @@
 import { useState } from "react";
-import iconsImg from "../assets/hacker_logo.png";
+import iconsImg from "../assets/hacker_logo.webp";
 
 export function Navbar({
   dark,

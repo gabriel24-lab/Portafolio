@@ -1,4 +1,4 @@
-import miFoto from "../assets/mi-foto.jpeg";
+import miFoto from "../assets/mi-foto.webp";
 
 export function AboutSection({
   dark,

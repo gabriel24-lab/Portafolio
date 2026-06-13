@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import AOS from "aos";
-import miFoto from "./assets/mi-foto.jpeg";
+import miFoto from "./assets/mi-foto.webp";
 import iconsImg from "./assets/icons.jpg";
 import { es } from "./translations/es";
 import { en } from "./translations/en";
@@ -61,7 +61,6 @@ export default function Portfolio() {
   return (
     <div style={{ color: text, fontFamily: "'Play', sans-serif", minHeight: "100vh", transition: "color 0.3s", position: "relative" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { overflow-x: hidden; }
