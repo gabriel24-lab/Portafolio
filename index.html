@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
     <!-- Fuentes: preload no bloqueante -->
     <link rel="preload" as="style"
@@ -15,12 +17,18 @@
     <noscript><link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&amp;family=Press+Start+2P&amp;display=swap" /></noscript>
 
-    <!-- Bootstrap Icons: no bloqueante -->
+    <!-- Bootstrap Icons: no bloqueante + font-display:swap para evitar FOIT -->
     <link rel="preload" as="style"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
       onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" /></noscript>
+    <style>
+      @font-face {
+        font-family: "bootstrap-icons";
+        font-display: swap;
+      }
+    </style>
     <title>Gabriel Mejia Silva — Desarrollador Full Stack</title>
 
     <!-- SEO -->
