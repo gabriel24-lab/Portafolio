@@ -178,11 +178,10 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
     <div
       style={{
         position: "fixed", inset: 0, zIndex: 9999,
-        background: overlayBg,
-        backdropFilter: "blur(18px)",
+        background: dark ? "rgba(4,6,20,0.95)" : "rgba(10,12,40,0.95)",
         display: "flex", alignItems: "center", justifyContent: "center",
         padding: "16px",
-        animation: "modalFadeIn 0.3s ease",
+        animation: "modalFadeIn 0.2s ease",
       }}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
@@ -217,21 +216,6 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
         }
         .img-thumb-wrap.active .img-thumb { border-color: ${accent}; box-shadow: 0 0 14px ${accent}66; }
         .img-thumb-wrap:hover .img-thumb { transform:scale(1.08); border-color:${accent}88; }
-        .img-thumb-zoom {
-          position:absolute; bottom:calc(100% + 10px); left:50%; transform:translateX(-50%) scale(0.85);
-          width:200px; height:130px; border-radius:12px; overflow:hidden;
-          border:2px solid ${accent}; box-shadow:0 12px 40px rgba(0,0,0,0.7);
-          opacity:0; pointer-events:none;
-          transition:opacity 0.2s, transform 0.2s;
-          z-index:10;
-        }
-        .img-thumb-zoom img { width:100%; height:100%; object-fit:cover; display:block; }
-        .img-thumb-wrap:hover .img-thumb-zoom { opacity:1; transform:translateX(-50%) scale(1); }
-        .img-thumb-zoom::after {
-          content:''; position:absolute; bottom:-8px; left:50%; transform:translateX(-50%);
-          border:8px solid transparent; border-top-color:${accent};
-          border-bottom:none;
-        }
         .main-img-wrap { cursor:zoom-in; }
         .main-img-overlay {
           position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
@@ -377,11 +361,8 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
                             alt={img.caption || `Imagen ${i+1}`}
                             loading="lazy"
                             className="img-thumb"
+                            style={{ transform: 'translateZ(0)', willChange: 'transform' }}
                           />
-                          {/* Zoom tooltip al pasar el mouse */}
-                          <div className="img-thumb-zoom">
-                            <img src={img.src} alt={img.caption || `Imagen ${i+1}`} loading="lazy" />
-                          </div>
                         </div>
                       ))}
                     </div>
@@ -558,27 +539,24 @@ export function ProjectsSection({
     <section id="projects" aria-label="Proyectos" style={{ padding: "80px clamp(16px,6vw,140px)", background: bg }}>
       <style>{`
         .ps-scene {
-          width: min(380px, 92vw);
-          height: auto;
-          min-height: 420px;
-          perspective: 1200px;
+          width: min(340px, 90vw);
+          height: 100%;
+          perspective: 2000px;
           cursor: pointer;
         }
         .ps-card {
           position: relative;
           width: 100%;
           height: 100%;
-          min-height: 420px;
           transform-style: preserve-3d;
-          transition: transform 0.72s cubic-bezier(.4,0,.2,1);
+          transition: transform 0.6s cubic-bezier(.4,0,.2,1);
+          will-change: transform;
         }
         .ps-scene:hover .ps-card,
         .ps-scene.flipped .ps-card {
           transform: rotateY(180deg);
         }
         .ps-face {
-          position: absolute;
-          inset: 0;
           border-radius: 22px;
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
@@ -587,17 +565,16 @@ export function ProjectsSection({
           flex-direction: column;
         }
         .ps-front {
+          position: relative;
+          height: 100%;
           background: ${frontBg};
           border: 1px solid ${border};
-          padding: clamp(18px,4vw,30px);
-          gap: 16px;
           box-shadow: 0 4px 30px rgba(0,0,0,0.14);
-          transition: box-shadow 0.4s;
-        }
-        .ps-scene:hover .ps-front {
-          box-shadow: 0 20px 60px ${accent}30;
+          z-index: 2;
         }
         .ps-back {
+          position: absolute;
+          inset: 0;
           background: ${backBg};
           border: 1px solid ${accent}55;
           transform: rotateY(180deg);
@@ -607,11 +584,11 @@ export function ProjectsSection({
         }
         .ps-tech-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 8px;
+          grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+          gap: 12px;
           flex: 1;
           align-content: center;
-          margin: 10px 0;
+          margin: 14px 0;
         }
         .ps-chip {
           display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -686,7 +663,7 @@ export function ProjectsSection({
         }
         .project-item {
           width: 100%;
-          max-width: 420px;
+          max-width: 340px;
         }
       `}</style>
 
@@ -708,11 +685,11 @@ export function ProjectsSection({
           <div
             key={pi}
             className="project-item"
-            data-aos={pi % 2 === 0 ? "zoom-in-up" : "zoom-in-down"}
-            data-aos-duration="850"
-            data-aos-delay={pi * 120}
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay={pi * 100}
           >
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
               <TapFlipCard
                 proj={proj}
                 dark={dark}
@@ -770,15 +747,32 @@ function TapFlipCard({ proj, dark, accent, accentAlt, text, textMuted, tx, onOpe
 
         {/* ═══ FRENTE ═══ */}
         <div className="ps-face ps-front">
-          <div style={{ width: 52, height: 52, borderRadius: 14, flexShrink: 0, background: `linear-gradient(135deg,${accent}20,${accent}38)`, border: `1px solid ${accent}44`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <i className={`bi ${proj.icon}`} style={{ fontSize: 24, color: accent }} />
+          {/* Imagen Superior */}
+          <div style={{ width: '100%', borderBottom: `1px solid ${dark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'}` }}>
+            <img 
+              src={proj.cardImage || proj.details?.images?.[0]?.src} 
+              alt={proj.name}
+              style={{ width: '100%', height: 'auto', display: 'block', aspectRatio: '1600/1120', objectFit: 'cover', transform: 'translateZ(0)', willChange: 'transform' }}
+              loading="lazy"
+            />
           </div>
-          <div style={{ flex: 1, minHeight: 0 }}>
-            <h3 style={{ fontWeight: 800, fontSize: "clamp(16px,4vw,20px)", marginBottom: 10, color: text, letterSpacing: "-0.02em" }}>{proj.name}</h3>
-            <p style={{ fontSize: "clamp(12px,3vw,13px)", lineHeight: 1.8, color: textMuted }}>{proj.desc}</p>
+          
+          {/* Contenido Inferior */}
+          <div style={{ padding: 'clamp(18px,4vw,22px)', display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <h3 style={{ fontWeight: 800, fontSize: "clamp(16px,4vw,19px)", color: text, letterSpacing: "-0.02em", margin: 0 }}>{proj.name}</h3>
+              <div style={{ width: 38, height: 38, borderRadius: 10, flexShrink: 0, background: `linear-gradient(135deg,${accent}15,${accent}30)`, border: `1px solid ${accent}40`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <i className={`bi ${proj.icon}`} style={{ fontSize: 18, color: accent }} />
+              </div>
+            </div>
+            
+            <p style={{ fontSize: "clamp(12.5px,3vw,13.5px)", lineHeight: 1.6, color: textMuted, margin: 0 }}>{proj.desc}</p>
+            
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: 10 }}>
+              <div className="ps-badge"><span className="ps-dot" />{tx.projects.inProduction}</div>
+              <div className="ps-hint" style={{ position: 'static', opacity: 0.6, fontSize: '10px' }}><i className="bi bi-arrow-repeat" style={{ fontSize: 11 }} />{tx.projects.hoverHint}</div>
+            </div>
           </div>
-          <div className="ps-badge"><span className="ps-dot" />{tx.projects.inProduction}</div>
-          <div className="ps-hint"><i className="bi bi-arrow-repeat" style={{ fontSize: 11 }} />{tx.projects.hoverHint}</div>
           <div className="ps-tap-hint" style={{ position: "absolute", bottom: 11, right: 15, fontSize: "9.5px", fontFamily: "'Play', sans-serif", color: textMuted, letterSpacing: "0.05em", alignItems: "center", gap: 4, opacity: 0.5, pointerEvents: "none" }}>
             <i className="bi bi-hand-index" style={{ fontSize: 11 }} />{tx.projects.tapHint}
           </div>

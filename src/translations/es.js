@@ -94,8 +94,49 @@ export const es = {
     },
     items: [
       {
+        name: "Antojapp",
+        desc: "Plataforma de delivery diseñada para impulsar negocios locales emergentes. Conecta a los usuarios con nuevas opciones gastronómicas en su zona, ofreciendo a los comercios una alternativa accesible para vender en línea sin altas comisiones.",
+        cardImage: "/antojapp/tarjetaAntojapp.png",
+        icon: "bi-shop",
+        link: "https://antojapp.pages.dev/",
+        techs: [
+          { name: "React", slug: "react", color: "#61DAFB" },
+          { name: "CSS3", slug: "css", color: "#1572B6" },
+          { name: "Node.js", slug: "node.js", color: "#339933" },
+          { name: "Express", slug: "express", color: "#000000" },
+          { name: "PostgreSQL", slug: "postgresql", color: "#336791" },
+        ],
+        details: {
+          images: [
+            { src: "/antojapp/inicio.png", caption: "Pantalla de Inicio" },
+            { src: "/antojapp/negocios.png", caption: "Lista de Negocios" },
+            { src: "/antojapp/detallesnegocio.png", caption: "Detalles del Negocio" },
+            { src: "/antojapp/inicio sesion.png", caption: "Inicio de Sesión" },
+            { src: "/antojapp/registro.png", caption: "Pantalla de Registro" }
+          ],
+          experience: "Participé en la creación de Antojapp desarrollando tanto el frontend como el backend. Me encargué de estructurar una plataforma amigable para los usuarios y los dueños de negocios locales. Implementar un sistema de delivery funcional desde cero me permitió fortalecer mis habilidades en React y Node.js, así como aprender a gestionar bases de datos con PostgreSQL.",
+          why: "El problema o mi motivación para hacerla fue porque mayormente las personas tienden a comprar en locales o negocios ya reconocidos sin darle oportunidad a los que apenas están iniciando y no tienen la suficiente capacidad para hacerse más reconocidos. Con este sistema mi intención es que tanto usuarios como dueños de negocios coordinen y puedan compaginar sobre los gustos de las personas.",
+          techNotes: "La plataforma conecta el frontend en React con un backend en Node.js y Express, utilizando PostgreSQL para gestionar usuarios, negocios y pedidos de manera eficiente.",
+          challenges: [
+            {
+              icon: "bi-shield-lock",
+              color: "#6c8eff",
+              title: "Seguridad de los datos",
+              desc: "Un gran desafío fue cómo llevar a cabo la seguridad de los datos de las personas en la plataforma, asegurando que la información sensible estuviera protegida.",
+            },
+            {
+              icon: "bi-google",
+              color: "#DB4437",
+              title: "Autenticación con Google",
+              desc: "Implementar el inicio de sesión con Google fue un reto completamente nuevo para mí, ya que hasta el momento solo había trabajado con formularios de login tradicionales. Gracias a herramientas de internet como YouTube, GitHub y la IA, pude conectar todo y así colocar exitosamente esa opción.",
+            },
+          ],
+        },
+      },
+      {
         name: "Parksmart",
         desc: "Es un sistema de automatización del parqueadero del SENA para la entrada y salida de vehículos. Permite que los guardias registren el acceso mediante un código QR, generado de forma personal para cada usuario, y solo cuenta con un registro exclusivo para usuarios SENA.",
+        cardImage: "/screenshots/tarjetaParksmart.jpeg",
         icon: "bi-p-circle",
         link: "https://parksmart.vercel.app/",
         techs: [
