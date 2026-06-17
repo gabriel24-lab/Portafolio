@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IcMail, IcLinkedIn, IcGitHub2, IcTwitter2, IcWhatsApp, IcLocation } from "../components/icons/SocialIcons";
+import { IcMail, IcLinkedIn, IcGitHub2, IcTwitter2, IcLocation } from "../components/icons/SocialIcons";
 
 export function ContactSection({ dark, accent, accentAlt, surface, surfaceAlt, border, text, textMuted, tx }) {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -38,7 +38,6 @@ export function ContactSection({ dark, accent, accentAlt, surface, surfaceAlt, b
     { icon: <IcMail />, label: tx.contact.email, href: "mailto:gabrielmejiasilva5@gmail.com", color: "#6c63ff" },
     { icon: <IcLinkedIn />, label: tx.contact.linkedin, href: "https://www.linkedin.com/in/gabriel-mejia-silva-36a3b4412/?skipRedirect=true", color: "#0A66C2" },
     { icon: <IcGitHub2 />, label: tx.contact.github, href: "https://github.com/gabriel24-lab", color: dark ? "#e0e0e0" : "#181717" },
-    { icon: <IcWhatsApp />, label: "WhatsApp", href: "https://wa.me/573243112795?text=Hola%20Gabriel%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20contigo%20sobre%20un%20proyecto.", color: "#25D366" },
   ];
   const labelStyle = { fontSize: 12, fontWeight: 600, color: textMuted, marginBottom: 6, display: "block", fontFamily: "'Play', sans-serif", letterSpacing: 0.5 };
 
