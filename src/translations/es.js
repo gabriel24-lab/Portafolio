@@ -1,10 +1,17 @@
 export const es = {
-  nav: { about: "Sobre mí", skills: "Habilidades", experience: "Estudios", projects: "Proyectos", contact: "Contacto" },
+  nav: {
+    about: "Sobre mí",
+    skills: "Habilidades",
+    experience: "Estudios",
+    projects: "Proyectos",
+    contact: "Contacto",
+  },
   hero: {
     greeting: "Hola, soy",
     name: "Gabriel Mejia",
     title: "Desarrollador de Software",
-    subtitle: "Apasionado por el aprendizaje continuo y la creación de soluciones tecnológicas que generen impacto.",
+    subtitle:
+      "Apasionado por el aprendizaje continuo y la creación de soluciones tecnológicas que generen impacto.",
     downloadCV: "Descargar CV",
     contact: "Contáctame",
     photoAlt: "Foto de perfil",
@@ -25,22 +32,54 @@ export const es = {
       {
         name: "Frontend",
         icon: "◧",
-        items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Redux", "GraphQL"],
+        items: [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Framer Motion",
+          "Redux",
+          "GraphQL",
+        ],
       },
       {
         name: "Backend",
         icon: "◧",
-        items: ["Node.js", "Express", "NestJS", "PostgreSQL", "MongoDB", "Redis", "REST APIs"],
+        items: [
+          "Node.js",
+          "Express",
+          "NestJS",
+          "PostgreSQL",
+          "MongoDB",
+          "Redis",
+          "REST APIs",
+        ],
       },
       {
         name: "DevOps & Cloud",
         icon: "◧",
-        items: ["AWS", "Docker", "Kubernetes", "CI/CD", "GitHub Actions", "Terraform", "Linux"],
+        items: [
+          "AWS",
+          "Docker",
+          "Kubernetes",
+          "CI/CD",
+          "GitHub Actions",
+          "Terraform",
+          "Linux",
+        ],
       },
       {
         name: "Herramientas",
         icon: "◧",
-        items: ["Git", "Figma", "Jest", "Cypress", "Webpack", "Storybook", "Postman"],
+        items: [
+          "Git",
+          "Figma",
+          "Jest",
+          "Cypress",
+          "Webpack",
+          "Storybook",
+          "Postman",
+        ],
       },
     ],
   },
@@ -53,27 +92,46 @@ export const es = {
         company: "Servicio Nacional de Aprendizaje (SENA)",
         period: "2024 – Presente",
         location: "Colombia",
-        description: "Actualmente curso este programa tecnológico con énfasis en bases de datos (MySQL, SQL Server), desarrollo frontend (HTML, CSS, JavaScript), control de versiones con Git y organización y liderazgo de proyectos de software.",
-        tags: ["HTML", "CSS", "JavaScript", "MySQL", "SQL Server", "Git", "Liderazgo"],
+        description:
+          "Actualmente curso este programa tecnológico con énfasis en bases de datos (MySQL, SQL Server), desarrollo frontend (HTML, CSS, JavaScript), control de versiones con Git y organización y liderazgo de proyectos de software.",
+        tags: [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "MySQL",
+          "SQL Server",
+          "Git",
+          "Liderazgo",
+        ],
       },
       {
         role: "Técnico en Sistemas",
         company: "Servicio Nacional de Aprendizaje (SENA)",
         period: "2022 – 2023",
         location: "Colombia",
-        description: "Formación técnica en fundamentos de internet, arquitectura y mantenimiento de computadores, hardware, soporte técnico y bases de software.",
-        tags: ["Hardware", "Mantenimiento PC", "Redes", "Soporte técnico", "Software"],
+        description:
+          "Formación técnica en fundamentos de internet, arquitectura y mantenimiento de computadores, hardware, soporte técnico y bases de software.",
+        tags: [
+          "Hardware",
+          "Mantenimiento PC",
+          "Redes",
+          "Soporte técnico",
+          "Software",
+        ],
       },
     ],
   },
   projects: {
     title: "Proyectos",
     subtitle: "Algunos de mis trabajos más representativos",
+    categories: [
+      { id: "all", label: "Todos" },
+      { id: "fullstack", label: "Full Stack" },
+      { id: "landing", label: "Landing Pages" },
+    ],
     cta: "Ver proyecto",
     seeDetails: "Ver detalles",
     inProduction: "En producción",
-    hoverHint: "Hover para ver el stack",
-    tapHint: "Tap para ver el stack",
     techStack: "Stack tecnológico",
     modal: {
       projectLabel: "PROYECTO",
@@ -95,8 +153,9 @@ export const es = {
     items: [
       {
         name: "Antojapp",
+        category: "fullstack",
         desc: "Plataforma de delivery diseñada para impulsar negocios locales emergentes. Conecta a los usuarios con nuevas opciones gastronómicas en su zona, ofreciendo a los comercios una alternativa accesible para vender en línea sin altas comisiones.",
-        cardImage: "/antojapp/tarjetaAntojapp.png",
+        cardImage: "/antojapp/tarjetaAntojapp.png", 
         icon: "bi-shop",
         link: "https://antojapp.pages.dev/",
         techs: [
@@ -110,13 +169,18 @@ export const es = {
           images: [
             { src: "/antojapp/inicio.png", caption: "Pantalla de Inicio" },
             { src: "/antojapp/negocios.png", caption: "Lista de Negocios" },
-            { src: "/antojapp/detallesnegocio.png", caption: "Detalles del Negocio" },
+            {
+              src: "/antojapp/detallesnegocio.png",
+              caption: "Detalles del Negocio",
+            },
             { src: "/antojapp/inicio sesion.png", caption: "Inicio de Sesión" },
-            { src: "/antojapp/registro.png", caption: "Pantalla de Registro" }
+            { src: "/antojapp/registro.png", caption: "Pantalla de Registro" },
           ],
-          experience: "Participé en la creación de Antojapp desarrollando tanto el frontend como el backend. Me encargué de estructurar una plataforma amigable para los usuarios y los dueños de negocios locales. Implementar un sistema de delivery funcional desde cero me permitió fortalecer mis habilidades en React y Node.js, así como aprender a gestionar bases de datos con PostgreSQL.",
+          experience:
+            "Participé en la creación de Antojapp desarrollando tanto el frontend como el backend. Me encargué de estructurar una plataforma amigable para los usuarios y los dueños de negocios locales. Implementar un sistema de delivery funcional desde cero me permitió fortalecer mis habilidades en React y Node.js, así como aprender a gestionar bases de datos con PostgreSQL.",
           why: "El problema o mi motivación para hacerla fue porque mayormente las personas tienden a comprar en locales o negocios ya reconocidos sin darle oportunidad a los que apenas están iniciando y no tienen la suficiente capacidad para hacerse más reconocidos. Con este sistema mi intención es que tanto usuarios como dueños de negocios coordinen y puedan compaginar sobre los gustos de las personas.",
-          techNotes: "La plataforma conecta el frontend en React con un backend en Node.js y Express, utilizando PostgreSQL para gestionar usuarios, negocios y pedidos de manera eficiente.",
+          techNotes:
+            "La plataforma conecta el frontend en React con un backend en Node.js y Express, utilizando PostgreSQL para gestionar usuarios, negocios y pedidos de manera eficiente.",
           challenges: [
             {
               icon: "bi-shield-lock",
@@ -135,6 +199,7 @@ export const es = {
       },
       {
         name: "Parksmart",
+        category: "fullstack",
         desc: "Es un sistema de automatización del parqueadero del SENA para la entrada y salida de vehículos. Permite que los guardias registren el acceso mediante un código QR, generado de forma personal para cada usuario, y solo cuenta con un registro exclusivo para usuarios SENA.",
         cardImage: "/screenshots/tarjetaParksmart.jpeg",
         icon: "bi-p-circle",
@@ -149,18 +214,44 @@ export const es = {
         ],
         details: {
           images: [
-            { src: "/screenshots/login.webp", caption: "Pantalla de inicio de sesión" },
-            { src: "/screenshots/panel-usuario.webp", caption: "Pantalla del panel de usuario" },
-            { src: "/screenshots/mivehiculo.webp", caption: "Pantalla de Mi Vehículo en los usuarios" },
-            { src: "/screenshots/historialusuario.webp", caption: "Pantalla del historial del usuario" },
-            { src: "/screenshots/panel-operario.webp", caption: "Pantalla del panel de operario" },
-            { src: "/screenshots/scanner-operario.webp", caption: "Pantalla de escaneo de QR" },
-            { src: "/screenshots/panel-superadmin.webp", caption: "Pantalla del panel de superadministrador" },
-            { src: "/screenshots/panel-analisis.webp", caption: "Pantalla del panel de análisis" },
+            {
+              src: "/screenshots/login.webp",
+              caption: "Pantalla de inicio de sesión",
+            },
+            {
+              src: "/screenshots/panel-usuario.webp",
+              caption: "Pantalla del panel de usuario",
+            },
+            {
+              src: "/screenshots/mivehiculo.webp",
+              caption: "Pantalla de Mi Vehículo en los usuarios",
+            },
+            {
+              src: "/screenshots/historialusuario.webp",
+              caption: "Pantalla del historial del usuario",
+            },
+            {
+              src: "/screenshots/panel-operario.webp",
+              caption: "Pantalla del panel de operario",
+            },
+            {
+              src: "/screenshots/scanner-operario.webp",
+              caption: "Pantalla de escaneo de QR",
+            },
+            {
+              src: "/screenshots/panel-superadmin.webp",
+              caption: "Pantalla del panel de superadministrador",
+            },
+            {
+              src: "/screenshots/panel-analisis.webp",
+              caption: "Pantalla del panel de análisis",
+            },
           ],
-          experience: "Desarrollé ParkSmart como proyecto institucional para el Servicio Nacional de Aprendizaje (SENA), participando principalmente en la construcción del frontend y del backend de la aplicación. Implementé funcionalidades como autenticación mediante códigos QR, gestión de usuarios y vehículos, control de acceso y despliegue en la nube. Este proyecto fortaleció mis habilidades como desarrollador full stack, enfrentándome a desafíos reales y creando soluciones desde cero.",
+          experience:
+            "Desarrollé ParkSmart como proyecto institucional para el Servicio Nacional de Aprendizaje (SENA), participando principalmente en la construcción del frontend y del backend de la aplicación. Implementé funcionalidades como autenticación mediante códigos QR, gestión de usuarios y vehículos, control de acceso y despliegue en la nube. Este proyecto fortaleció mis habilidades como desarrollador full stack, enfrentándome a desafíos reales y creando soluciones desde cero.",
           why: "El parqueadero de la institución no contaba con ningún sistema digital para registrar la entrada y salida de vehículos. Los guardias les daban una ficha a los aprendices, lo cual no aseguraba totalmente la seguridad de sus bicicletas. Parksmart nació para digitalizar ese proceso y aportar más seguridad a la hora de ingresar y salir del parqueadero.",
-          techNotes: "Elegí Node.js + Express para el backend por su ecosistema y la facilidad de integrar bibliotecas de generación de QR. PostgreSQL fue la elección natural para manejar la base de datos relacional de usuarios y registros de acceso. El frontend se construyó en HTML/CSS/JS puro para mantener la simplicidad y la compatibilidad.",
+          techNotes:
+            "Elegí Node.js + Express para el backend por su ecosistema y la facilidad de integrar bibliotecas de generación de QR. PostgreSQL fue la elección natural para manejar la base de datos relacional de usuarios y registros de acceso. El frontend se construyó en HTML/CSS/JS puro para mantener la simplicidad y la compatibilidad.",
           challenges: [
             {
               icon: "bi-shield-lock",
@@ -183,12 +274,26 @@ export const es = {
           ],
         },
       },
+      {
+        name: "Tecnico Gabriel Mejia",
+        category: "landing",
+        desc: "Landing page diseñada para promocionar servicios de electricidad industrial, enfocada en transmitir confianza, experiencia y facilitar el contacto con potenciales clientes.",
+        cardImage: "/landing/inicio.png",
+        icon: "bi-layout-text-window",
+        link: "https://gabriel-mejia-electricista.vercel.app/",
+        techs: [
+          { name: "React", slug: "react", color: "#61DAFB" },
+          { name: "JavaScript", slug: "javascript", color: "#F7DF1E" },
+          { name: "CSS3", slug: "css", color: "#1572B6" },
+        ],
+      },
     ],
   },
   contact: {
     title: "Contacto",
     subtitle: "¿Tienes un proyecto en mente? Hablemos.",
-    leftDesc: "¿Tienes alguna pregunta o propuesta? Puedes encontrarme en estos canales.",
+    leftDesc:
+      "¿Tienes alguna pregunta o propuesta? Puedes encontrarme en estos canales.",
     formTitle: "Envíame un mensaje",
     formSub: "",
     formName: "Nombre",

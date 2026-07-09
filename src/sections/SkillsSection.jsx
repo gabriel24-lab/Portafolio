@@ -20,7 +20,9 @@ export function SkillsSection({
 
   const renderCard = (tech, i, baseDelay = 0) => {
     const isBlack = tech.color === "#000000" || tech.color === "#181717";
-    const isLightColor = ["#F7DF1E", "#FCC624", "#61DAFB", "#4FC08D"].includes(tech.color);
+    const isLightColor = ["#F7DF1E", "#FCC624", "#61DAFB", "#4FC08D"].includes(
+      tech.color,
+    );
     let iconColor = tech.color;
     if (dark && isBlack) iconColor = "#ffffff";
     if (!dark && isLightColor)
@@ -28,10 +30,10 @@ export function SkillsSection({
         tech.color === "#F7DF1E"
           ? "#b8a800"
           : tech.color === "#FCC624"
-          ? "#b08a00"
-          : tech.color === "#61DAFB"
-          ? "#0da0c0"
-          : "#2a8a5e";
+            ? "#b08a00"
+            : tech.color === "#61DAFB"
+              ? "#0da0c0"
+              : "#2a8a5e";
     const iconUrl =
       tech.iconUrl ??
       `https://cdn.simpleicons.org/${tech.slug}/${iconColor.replace("#", "")}`;
@@ -40,8 +42,8 @@ export function SkillsSection({
         ? "#888"
         : "#333"
       : isLightColor && !dark
-      ? iconColor
-      : tech.color;
+        ? iconColor
+        : tech.color;
     return (
       <div
         key={tech.name}
@@ -174,12 +176,39 @@ export function SkillsSection({
       `}</style>
 
       <div style={{ position: "relative", zIndex: 1 }}>
-
         {/* Header */}
         <div data-aos="fade-up" data-aos-duration="700">
-          <p style={{ fontFamily: "'Play', sans-serif", fontSize: 12, color: accent, marginBottom: 12, letterSpacing: 2 }}></p>
-          <h2 style={{ fontSize: "clamp(1rem,3.5vw,2rem)", fontWeight: 800, letterSpacing: "-0.01em", color: text, fontFamily: "'Press Start 2P', cursive", lineHeight: 1.4 }}>{tx.skills.title}</h2>
-          <p style={{ color: textMuted, fontSize: "clamp(13px,2vw,15px)", marginTop: 8, marginBottom: 40 }}>{tx.skills.subtitle}</p>
+          <p
+            style={{
+              fontFamily: "'Play', sans-serif",
+              fontSize: 12,
+              color: accent,
+              marginBottom: 12,
+              letterSpacing: 2,
+            }}
+          ></p>
+          <h2
+            style={{
+              fontSize: "clamp(1rem,3.5vw,2rem)",
+              fontWeight: 800,
+              letterSpacing: "-0.01em",
+              color: text,
+              fontFamily: "'Press Start 2P', cursive",
+              lineHeight: 1.4,
+            }}
+          >
+            {tx.skills.title}
+          </h2>
+          <p
+            style={{
+              color: textMuted,
+              fontSize: "clamp(13px,2vw,15px)",
+              marginTop: 8,
+              marginBottom: 40,
+            }}
+          >
+            {tx.skills.subtitle}
+          </p>
         </div>
 
         {/* Enfoque */}
@@ -202,13 +231,16 @@ export function SkillsSection({
           data-aos-duration="600"
           data-aos-delay="80"
         >
-          <span className="cat-badge comp-badge">{tx.skills.complementaryLabel}</span>
+          <span className="cat-badge comp-badge">
+            {tx.skills.complementaryLabel}
+          </span>
           <span className="cat-line" />
         </div>
         <div className="skills-grid">
-          {complementaryTechs.map((tech, i) => renderCard(tech, i, focusTechs.length))}
+          {complementaryTechs.map((tech, i) =>
+            renderCard(tech, i, focusTechs.length),
+          )}
         </div>
-
       </div>
     </section>
   );

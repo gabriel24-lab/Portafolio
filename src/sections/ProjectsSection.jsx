@@ -4,8 +4,14 @@ import { useState, useEffect, useRef, useCallback } from "react";
 function Lightbox({ images, startIndex, onClose }) {
   const [current, setCurrent] = useState(startIndex);
 
-  const prev = useCallback(() => setCurrent(i => (i - 1 + images.length) % images.length), [images.length]);
-  const next = useCallback(() => setCurrent(i => (i + 1) % images.length), [images.length]);
+  const prev = useCallback(
+    () => setCurrent((i) => (i - 1 + images.length) % images.length),
+    [images.length],
+  );
+  const next = useCallback(
+    () => setCurrent((i) => (i + 1) % images.length),
+    [images.length],
+  );
 
   useEffect(() => {
     const handler = (e) => {
@@ -21,10 +27,14 @@ function Lightbox({ images, startIndex, onClose }) {
     <div
       onClick={onClose}
       style={{
-        position: "fixed", inset: 0, zIndex: 99999,
+        position: "fixed",
+        inset: 0,
+        zIndex: 99999,
         background: "rgba(0,0,0,0.95)",
         backdropFilter: "blur(20px)",
-        display: "flex", alignItems: "center", justifyContent: "center",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         animation: "lbFadeIn 0.2s ease",
       }}
     >
@@ -51,10 +61,12 @@ function Lightbox({ images, startIndex, onClose }) {
         src={images[current]?.src}
         alt={images[current]?.caption || `Imagen ${current + 1}`}
         loading="lazy"
-        onClick={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
         style={{
-          maxWidth: "90vw", maxHeight: "85vh",
-          objectFit: "contain", borderRadius: 12,
+          maxWidth: "90vw",
+          maxHeight: "85vh",
+          objectFit: "contain",
+          borderRadius: 12,
           boxShadow: "0 30px 100px rgba(0,0,0,0.8)",
           animation: "lbImgIn 0.25s ease",
           userSelect: "none",
@@ -63,32 +75,64 @@ function Lightbox({ images, startIndex, onClose }) {
 
       {/* Caption */}
       {images[current]?.caption && (
-        <div style={{
-          position: "absolute", bottom: 60, left: "50%", transform: "translateX(-50%)",
-          background: "rgba(0,0,0,0.7)", color: "#fff",
-          padding: "8px 20px", borderRadius: 20, fontSize: 13,
-          fontFamily: "'Play',sans-serif", whiteSpace: "nowrap",
-          backdropFilter: "blur(8px)",
-        }}>
+        <div
+          style={{
+            position: "absolute",
+            bottom: 60,
+            left: "50%",
+            transform: "translateX(-50%)",
+            background: "rgba(0,0,0,0.7)",
+            color: "#fff",
+            padding: "8px 20px",
+            borderRadius: 20,
+            fontSize: 13,
+            fontFamily: "'Play',sans-serif",
+            whiteSpace: "nowrap",
+            backdropFilter: "blur(8px)",
+          }}
+        >
           {images[current].caption}
         </div>
       )}
 
       {/* Navegación prev/next */}
-      {images.length > 1 && <>
-        <button className="lb-nav" style={{ left: 20 }} onClick={e => { e.stopPropagation(); prev(); }}>
-          <i className="bi bi-chevron-left" />
-        </button>
-        <button className="lb-nav" style={{ right: 20 }} onClick={e => { e.stopPropagation(); next(); }}>
-          <i className="bi bi-chevron-right" />
-        </button>
-      </>}
+      {images.length > 1 && (
+        <>
+          <button
+            className="lb-nav"
+            style={{ left: 20 }}
+            onClick={(e) => {
+              e.stopPropagation();
+              prev();
+            }}
+          >
+            <i className="bi bi-chevron-left" />
+          </button>
+          <button
+            className="lb-nav"
+            style={{ right: 20 }}
+            onClick={(e) => {
+              e.stopPropagation();
+              next();
+            }}
+          >
+            <i className="bi bi-chevron-right" />
+          </button>
+        </>
+      )}
 
       {/* Dots */}
       {images.length > 1 && (
-        <div style={{ position: "absolute", bottom: 24, display: "flex", gap: 8 }} onClick={e => e.stopPropagation()}>
+        <div
+          style={{ position: "absolute", bottom: 24, display: "flex", gap: 8 }}
+          onClick={(e) => e.stopPropagation()}
+        >
           {images.map((_, i) => (
-            <div key={i} className={`lb-dot${i === current ? " active" : ""}`} onClick={() => setCurrent(i)} />
+            <div
+              key={i}
+              className={`lb-dot${i === current ? " active" : ""}`}
+              onClick={() => setCurrent(i)}
+            />
           ))}
         </div>
       )}
@@ -97,25 +141,45 @@ function Lightbox({ images, startIndex, onClose }) {
       <button
         onClick={onClose}
         style={{
-          position: "absolute", top: 20, right: 20,
-          width: 40, height: 40, borderRadius: "50%",
-          background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)",
-          color: "#fff", fontSize: 20, cursor: "pointer",
-          display: "flex", alignItems: "center", justifyContent: "center",
+          position: "absolute",
+          top: 20,
+          right: 20,
+          width: 40,
+          height: 40,
+          borderRadius: "50%",
+          background: "rgba(255,255,255,0.1)",
+          border: "1px solid rgba(255,255,255,0.2)",
+          color: "#fff",
+          fontSize: 20,
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           transition: "all 0.2s",
         }}
-        onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.22)"}
-        onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.1)"}
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.background = "rgba(255,255,255,0.22)")
+        }
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.background = "rgba(255,255,255,0.1)")
+        }
       >
         <i className="bi bi-x" />
       </button>
 
       {/* Contador */}
       {images.length > 1 && (
-        <div style={{
-          position: "absolute", top: 24, left: "50%", transform: "translateX(-50%)",
-          color: "rgba(255,255,255,0.6)", fontSize: 12, fontFamily: "'Play',sans-serif",
-        }}>
+        <div
+          style={{
+            position: "absolute",
+            top: 24,
+            left: "50%",
+            transform: "translateX(-50%)",
+            color: "rgba(255,255,255,0.6)",
+            fontSize: 12,
+            fontFamily: "'Play',sans-serif",
+          }}
+        >
           {current + 1} / {images.length}
         </div>
       )}
@@ -126,27 +190,45 @@ function Lightbox({ images, startIndex, onClose }) {
 /* ─── helper: URL del ícono desde simpleicons ─── */
 function techIconUrl(tech, dark) {
   const isBlack = tech.color === "#000000" || tech.color === "#181717";
-  const isLight = ["#F7DF1E", "#FCC624", "#61DAFB", "#4FC08D"].includes(tech.color);
+  const isLight = ["#F7DF1E", "#FCC624", "#61DAFB", "#4FC08D"].includes(
+    tech.color,
+  );
   let color = tech.color;
   if (dark && isBlack) color = "#ffffff";
   if (!dark && isLight)
     color =
-      tech.color === "#F7DF1E" ? "#b8a800"
-      : tech.color === "#FCC624" ? "#b08a00"
-      : tech.color === "#61DAFB" ? "#0da0c0"
-      : "#2a8a5e";
+      tech.color === "#F7DF1E"
+        ? "#b8a800"
+        : tech.color === "#FCC624"
+          ? "#b08a00"
+          : tech.color === "#61DAFB"
+            ? "#0da0c0"
+            : "#2a8a5e";
   return `https://cdn.simpleicons.org/${tech.slug}/${color.replace("#", "")}`;
 }
 
 /* ─── Modal de detalles del proyecto ─── */
-function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, surface, tx, onClose }) {
+function ProjectModal({
+  proj,
+  dark,
+  accent,
+  accentAlt,
+  text,
+  textMuted,
+  border,
+  surface,
+  tx,
+  onClose,
+}) {
   const [activeImg, setActiveImg] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const modalRef = useRef(null);
 
   // Cerrar con Escape
   useEffect(() => {
-    const handler = (e) => { if (e.key === "Escape") onClose(); };
+    const handler = (e) => {
+      if (e.key === "Escape") onClose();
+    };
     document.addEventListener("keydown", handler);
     document.body.style.overflow = "hidden";
     return () => {
@@ -168,22 +250,32 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
   const [activeTab, setActiveTab] = useState("overview");
   const m = tx.projects.modal;
   const tabs = [
-    { id: "overview", label: m.tabs.overview,   icon: "bi-grid-1x2" },
-    { id: "why",      label: m.tabs.why,        icon: "bi-lightbulb" },
-    { id: "tech",     label: m.tabs.tech,       icon: "bi-cpu" },
-    { id: "challenges", label: m.tabs.challenges, icon: "bi-exclamation-diamond" },
+    { id: "overview", label: m.tabs.overview, icon: "bi-grid-1x2" },
+    { id: "why", label: m.tabs.why, icon: "bi-lightbulb" },
+    { id: "tech", label: m.tabs.tech, icon: "bi-cpu" },
+    {
+      id: "challenges",
+      label: m.tabs.challenges,
+      icon: "bi-exclamation-diamond",
+    },
   ];
 
   return (
     <div
       style={{
-        position: "fixed", inset: 0, zIndex: 9999,
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
         background: dark ? "rgba(4,6,20,0.95)" : "rgba(10,12,40,0.95)",
-        display: "flex", alignItems: "center", justifyContent: "center",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         padding: "16px",
         animation: "modalFadeIn 0.2s ease",
       }}
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <style>{`
         @keyframes modalFadeIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
@@ -234,60 +326,119 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
           background: cardBg,
           border: `1px solid ${border}`,
           borderRadius: 24,
-          width: "100%", maxWidth: 780,
+          width: "100%",
+          maxWidth: 780,
           maxHeight: "92vh",
-          display: "flex", flexDirection: "column",
+          display: "flex",
+          flexDirection: "column",
           boxShadow: `0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px ${accent}20`,
           overflow: "hidden",
         }}
       >
         {/* ── Header ── */}
-        <div style={{
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "20px 24px 16px",
-          borderBottom: `1px solid ${border}40`,
-          flexShrink: 0,
-        }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "20px 24px 16px",
+            borderBottom: `1px solid ${border}40`,
+            flexShrink: 0,
+          }}
+        >
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <div style={{
-              width: 44, height: 44, borderRadius: 12, flexShrink: 0,
-              background: `linear-gradient(135deg,${accent}25,${accent}40)`,
-              border: `1px solid ${accent}44`,
-              display: "flex", alignItems: "center", justifyContent: "center",
-            }}>
-              <i className={`bi ${proj.icon}`} style={{ fontSize: 20, color: accent }} />
+            <div
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: 12,
+                flexShrink: 0,
+                background: `linear-gradient(135deg,${accent}25,${accent}40)`,
+                border: `1px solid ${accent}44`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <i
+                className={`bi ${proj.icon}`}
+                style={{ fontSize: 20, color: accent }}
+              />
             </div>
             <div>
-              <p style={{ fontSize: 10, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 2 }}>{m.projectLabel}</p>
-              <h2 style={{ fontSize: "clamp(16px,4vw,22px)", fontWeight: 800, color: text, fontFamily: "'Press Start 2P',cursive", lineHeight: 1.2 }}>{proj.name}</h2>
+              <p
+                style={{
+                  fontSize: 10,
+                  color: accent,
+                  fontFamily: "'Play',sans-serif",
+                  letterSpacing: 2,
+                  marginBottom: 2,
+                }}
+              >
+                {m.projectLabel}
+              </p>
+              <h2
+                style={{
+                  fontSize: "clamp(16px,4vw,22px)",
+                  fontWeight: 800,
+                  color: text,
+                  fontFamily: "'Press Start 2P',cursive",
+                  lineHeight: 1.2,
+                }}
+              >
+                {proj.name}
+              </h2>
             </div>
           </div>
           <button
             onClick={onClose}
             style={{
-              width: 36, height: 36, borderRadius: 10, border: `1px solid ${border}`,
-              background: "transparent", color: textMuted, cursor: "pointer",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 18, transition: "all 0.2s",
+              width: 36,
+              height: 36,
+              borderRadius: 10,
+              border: `1px solid ${border}`,
+              background: "transparent",
+              color: textMuted,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 18,
+              transition: "all 0.2s",
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = accent; e.currentTarget.style.color = accent; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = border; e.currentTarget.style.color = textMuted; }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = accent;
+              e.currentTarget.style.color = accent;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = border;
+              e.currentTarget.style.color = textMuted;
+            }}
           >
             <i className="bi bi-x" />
           </button>
         </div>
 
         {/* ── Tabs ── */}
-        <div className="modal-tabs" style={{
-          display: "flex", gap: 6, padding: "12px 20px",
-          borderBottom: `1px solid ${border}30`,
-          flexShrink: 0, overflowX: "auto",
-        }}>
-          {tabs.map(tab => (
+        <div
+          className="modal-tabs"
+          style={{
+            display: "flex",
+            gap: 6,
+            padding: "12px 20px",
+            borderBottom: `1px solid ${border}30`,
+            flexShrink: 0,
+            overflowX: "auto",
+          }}
+        >
+          {tabs.map((tab) => (
             <button
               key={tab.id}
               className={`modal-tab${activeTab === tab.id ? " active" : ""}`}
-              style={{ color: activeTab === tab.id ? accent : textMuted, background: activeTab === tab.id ? tabActiveBg : "transparent" }}
+              style={{
+                color: activeTab === tab.id ? accent : textMuted,
+                background: activeTab === tab.id ? tabActiveBg : "transparent",
+              }}
               onClick={() => setActiveTab(tab.id)}
             >
               <i className={`bi ${tab.icon}`} style={{ fontSize: 13 }} />
@@ -297,8 +448,10 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
         </div>
 
         {/* ── Contenido scrolleable ── */}
-        <div className="modal-scroll" style={{ overflowY: "auto", flex: 1, padding: "24px" }}>
-
+        <div
+          className="modal-scroll"
+          style={{ overflowY: "auto", flex: 1, padding: "24px" }}
+        >
           {/* TAB: overview */}
           {activeTab === "overview" && (
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -310,38 +463,69 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
                     className="main-img-wrap"
                     onClick={() => setLightboxOpen(true)}
                     style={{
-                      width: "100%", borderRadius: 16, overflow: "hidden",
+                      width: "100%",
+                      borderRadius: 16,
+                      overflow: "hidden",
                       border: `1px solid ${border}`,
                       background: dark ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.06)",
-                      aspectRatio: "16/9", display: "flex", alignItems: "center", justifyContent: "center",
-                      marginBottom: 12, position: "relative",
+                      aspectRatio: "16/9",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: 12,
+                      position: "relative",
                     }}
                   >
                     <img
                       src={images[activeImg]?.src}
                       alt={images[activeImg]?.caption || proj.name}
                       loading="lazy"
-                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                      onError={e => { e.target.style.display = "none"; }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                      }}
                     />
                     {/* Overlay con ícono de lupa */}
                     <div className="main-img-overlay">
-                      <div style={{
-                        width: 48, height: 48, borderRadius: "50%",
-                        background: "rgba(0,0,0,0.55)", backdropFilter: "blur(6px)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        border: "1.5px solid rgba(255,255,255,0.3)",
-                      }}>
-                        <i className="bi bi-zoom-in" style={{ color: "#fff", fontSize: 20 }} />
+                      <div
+                        style={{
+                          width: 48,
+                          height: 48,
+                          borderRadius: "50%",
+                          background: "rgba(0,0,0,0.55)",
+                          backdropFilter: "blur(6px)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          border: "1.5px solid rgba(255,255,255,0.3)",
+                        }}
+                      >
+                        <i
+                          className="bi bi-zoom-in"
+                          style={{ color: "#fff", fontSize: 20 }}
+                        />
                       </div>
                     </div>
                     {images[activeImg]?.caption && (
-                      <div style={{
-                        position: "absolute", bottom: 0, left: 0, right: 0,
-                        background: "linear-gradient(transparent, rgba(0,0,0,0.7))",
-                        padding: "28px 16px 12px",
-                        color: "#fff", fontSize: 12, fontFamily: "'Play',sans-serif",
-                      }}>
+                      <div
+                        style={{
+                          position: "absolute",
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          background:
+                            "linear-gradient(transparent, rgba(0,0,0,0.7))",
+                          padding: "28px 16px 12px",
+                          color: "#fff",
+                          fontSize: 12,
+                          fontFamily: "'Play',sans-serif",
+                        }}
+                      >
                         {images[activeImg].caption}
                       </div>
                     )}
@@ -349,7 +533,14 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
 
                   {/* Miniaturas con zoom tooltip al hover */}
                   {images.length > 1 && (
-                    <div style={{ display: "flex", gap: 10, flexWrap: "wrap", paddingTop: 4 }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: 10,
+                        flexWrap: "wrap",
+                        paddingTop: 4,
+                      }}
+                    >
                       {images.map((img, i) => (
                         <div
                           key={i}
@@ -358,10 +549,13 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
                         >
                           <img
                             src={img.src}
-                            alt={img.caption || `Imagen ${i+1}`}
+                            alt={img.caption || `Imagen ${i + 1}`}
                             loading="lazy"
                             className="img-thumb"
-                            style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                            style={{
+                              transform: "translateZ(0)",
+                              willChange: "transform",
+                            }}
                           />
                         </div>
                       ))}
@@ -380,46 +574,128 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
               )}
 
               {/* Descripción */}
-              <div style={{
-                padding: "20px", borderRadius: 16,
-                border: `1px solid ${border}40`,
-                background: dark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)",
-              }}>
-                <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 10 }}>{m.descLabel}</p>
-                <p style={{ fontSize: "clamp(13px,2vw,14px)", lineHeight: 1.85, color: textMuted }}>{proj.desc}</p>
+              <div
+                style={{
+                  padding: "20px",
+                  borderRadius: 16,
+                  border: `1px solid ${border}40`,
+                  background: dark
+                    ? "rgba(255,255,255,0.03)"
+                    : "rgba(0,0,0,0.03)",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: 11,
+                    color: accent,
+                    fontFamily: "'Play',sans-serif",
+                    letterSpacing: 2,
+                    marginBottom: 10,
+                  }}
+                >
+                  {m.descLabel}
+                </p>
+                <p
+                  style={{
+                    fontSize: "clamp(13px,2vw,14px)",
+                    lineHeight: 1.85,
+                    color: textMuted,
+                  }}
+                >
+                  {proj.desc}
+                </p>
               </div>
 
               {/* Experiencia personal */}
               {experience && (
-                <div style={{
-                  padding: "20px", borderRadius: 16,
-                  border: `1px solid ${accent}30`,
-                  background: dark ? `${accent}08` : `${accent}06`,
-                }}>
-                  <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 10 }}>{m.experienceLabel}</p>
-                  <p style={{ fontSize: "clamp(13px,2vw,14px)", lineHeight: 1.85, color: text }}>{experience}</p>
+                <div
+                  style={{
+                    padding: "20px",
+                    borderRadius: 16,
+                    border: `1px solid ${accent}30`,
+                    background: dark ? `${accent}08` : `${accent}06`,
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: 11,
+                      color: accent,
+                      fontFamily: "'Play',sans-serif",
+                      letterSpacing: 2,
+                      marginBottom: 10,
+                    }}
+                  >
+                    {m.experienceLabel}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "clamp(13px,2vw,14px)",
+                      lineHeight: 1.85,
+                      color: text,
+                    }}
+                  >
+                    {experience}
+                  </p>
                 </div>
               )}
 
               {/* Badge + link */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-                <div style={{
-                  display: "inline-flex", alignItems: "center", gap: 6,
-                  padding: "6px 14px", borderRadius: 20, fontSize: 11, fontWeight: 700,
-                  fontFamily: "'Play',sans-serif", background: `${accent}18`, color: accent,
-                  border: `1px solid ${accent}35`,
-                }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4CAF50", boxShadow: "0 0 6px #4CAF5088", display: "inline-block" }} />
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                  gap: 12,
+                }}
+              >
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "6px 14px",
+                    borderRadius: 20,
+                    fontSize: 11,
+                    fontWeight: 700,
+                    fontFamily: "'Play',sans-serif",
+                    background: `${accent}18`,
+                    color: accent,
+                    border: `1px solid ${accent}35`,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: "50%",
+                      background: "#4CAF50",
+                      boxShadow: "0 0 6px #4CAF5088",
+                      display: "inline-block",
+                    }}
+                  />
                   {m.inProduction}
                 </div>
-                <a href={proj.link} target="_blank" rel="noopener noreferrer" style={{
-                  display: "inline-flex", alignItems: "center", gap: 8,
-                  padding: "9px 20px", borderRadius: 12,
-                  background: `linear-gradient(135deg, ${accent}, ${accentAlt || accent}cc)`,
-                  color: "#fff", fontFamily: "'Play',sans-serif", fontWeight: 700,
-                  fontSize: 12, textDecoration: "none", letterSpacing: "0.05em",
-                  boxShadow: `0 4px 20px ${accent}50`,
-                }}>
+                <a
+                  href={proj.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "9px 20px",
+                    borderRadius: 12,
+                    background: `linear-gradient(135deg, ${accent}, ${accentAlt || accent}cc)`,
+                    color: "#fff",
+                    fontFamily: "'Play',sans-serif",
+                    fontWeight: 700,
+                    fontSize: 12,
+                    textDecoration: "none",
+                    letterSpacing: "0.05em",
+                    boxShadow: `0 4px 20px ${accent}50`,
+                  }}
+                >
                   {m.viewProject} <i className="bi bi-arrow-up-right" />
                 </a>
               </div>
@@ -429,19 +705,60 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
           {/* TAB: why */}
           {activeTab === "why" && (
             <div style={{ animation: "slideUp 0.35s ease" }}>
-              <div style={{
-                padding: "28px", borderRadius: 18,
-                border: `1px solid ${border}`,
-                background: dark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)",
-                marginBottom: 20,
-              }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-                  <div style={{ width: 40, height: 40, borderRadius: 12, background: `${accent}20`, border: `1px solid ${accent}40`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <i className="bi bi-lightbulb-fill" style={{ color: "#FFD700", fontSize: 18 }} />
+              <div
+                style={{
+                  padding: "28px",
+                  borderRadius: 18,
+                  border: `1px solid ${border}`,
+                  background: dark
+                    ? "rgba(255,255,255,0.02)"
+                    : "rgba(0,0,0,0.02)",
+                  marginBottom: 20,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
+                    marginBottom: 20,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: 12,
+                      background: `${accent}20`,
+                      border: `1px solid ${accent}40`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <i
+                      className="bi bi-lightbulb-fill"
+                      style={{ color: "#FFD700", fontSize: 18 }}
+                    />
                   </div>
-                  <p style={{ fontSize: "clamp(13px,3vw,15px)", fontWeight: 700, color: text, fontFamily: "'Play',sans-serif" }}>{m.motivation}</p>
+                  <p
+                    style={{
+                      fontSize: "clamp(13px,3vw,15px)",
+                      fontWeight: 700,
+                      color: text,
+                      fontFamily: "'Play',sans-serif",
+                    }}
+                  >
+                    {m.motivation}
+                  </p>
                 </div>
-                <p style={{ fontSize: "clamp(13px,2vw,14px)", lineHeight: 2, color: textMuted }}>
+                <p
+                  style={{
+                    fontSize: "clamp(13px,2vw,14px)",
+                    lineHeight: 2,
+                    color: textMuted,
+                  }}
+                >
                   {why || m.comingSoon}
                 </p>
               </div>
@@ -451,35 +768,110 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
           {/* TAB: tech */}
           {activeTab === "tech" && (
             <div style={{ animation: "slideUp 0.35s ease" }}>
-              <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 20 }}>{m.fullStack}</p>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(110px,1fr))", gap: 12 }}>
+              <p
+                style={{
+                  fontSize: 11,
+                  color: accent,
+                  fontFamily: "'Play',sans-serif",
+                  letterSpacing: 2,
+                  marginBottom: 20,
+                }}
+              >
+                {m.fullStack}
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(110px,1fr))",
+                  gap: 12,
+                }}
+              >
                 {proj.techs.map((tech, i) => {
-                  const isBlack = tech.color === "#000000" || tech.color === "#181717";
-                  const isLight = ["#F7DF1E","#FCC624","#61DAFB","#4FC08D"].includes(tech.color);
+                  const isBlack =
+                    tech.color === "#000000" || tech.color === "#181717";
+                  const isLight = [
+                    "#F7DF1E",
+                    "#FCC624",
+                    "#61DAFB",
+                    "#4FC08D",
+                  ].includes(tech.color);
                   let iconColor = tech.color;
                   if (dark && isBlack) iconColor = "#ffffff";
-                  if (!dark && isLight) iconColor = tech.color === "#F7DF1E" ? "#b8a800" : tech.color === "#FCC624" ? "#b08a00" : tech.color === "#61DAFB" ? "#0da0c0" : "#2a8a5e";
+                  if (!dark && isLight)
+                    iconColor =
+                      tech.color === "#F7DF1E"
+                        ? "#b8a800"
+                        : tech.color === "#FCC624"
+                          ? "#b08a00"
+                          : tech.color === "#61DAFB"
+                            ? "#0da0c0"
+                            : "#2a8a5e";
                   const iconUrl = `https://cdn.simpleicons.org/${tech.slug}/${iconColor.replace("#", "")}`;
                   return (
                     <div
                       key={i}
                       style={{
-                        display: "flex", flexDirection: "column", alignItems: "center", gap: 10,
-                        padding: "18px 10px 14px", borderRadius: 16,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: 10,
+                        padding: "18px 10px 14px",
+                        borderRadius: 16,
                         border: `1px solid ${dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.09)"}`,
-                        background: dark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)",
-                        transition: "all 0.2s", animation: `slideUp 0.3s ease ${i*60}ms both`,
+                        background: dark
+                          ? "rgba(255,255,255,0.03)"
+                          : "rgba(0,0,0,0.03)",
+                        transition: "all 0.2s",
+                        animation: `slideUp 0.3s ease ${i * 60}ms both`,
                       }}
                     >
-                      <img src={iconUrl} alt={tech.name} width={36} height={36} loading="lazy" style={{ objectFit: "contain" }} onError={e => { e.target.style.display = "none"; }} />
-                      <span style={{ fontSize: 11, fontWeight: 700, color: textMuted, fontFamily: "'Play',sans-serif", textAlign: "center" }}>{tech.name}</span>
+                      <img
+                        src={iconUrl}
+                        alt={tech.name}
+                        width={36}
+                        height={36}
+                        loading="lazy"
+                        style={{ objectFit: "contain" }}
+                        onError={(e) => {
+                          e.target.style.display = "none";
+                        }}
+                      />
+                      <span
+                        style={{
+                          fontSize: 11,
+                          fontWeight: 700,
+                          color: textMuted,
+                          fontFamily: "'Play',sans-serif",
+                          textAlign: "center",
+                        }}
+                      >
+                        {tech.name}
+                      </span>
                     </div>
                   );
                 })}
               </div>
               {proj.details?.techNotes && (
-                <div style={{ marginTop: 20, padding: "18px 20px", borderRadius: 14, border: `1px solid ${border}40`, background: dark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)" }}>
-                  <p style={{ fontSize: "clamp(13px,2vw,14px)", lineHeight: 1.85, color: textMuted }}>{proj.details.techNotes}</p>
+                <div
+                  style={{
+                    marginTop: 20,
+                    padding: "18px 20px",
+                    borderRadius: 14,
+                    border: `1px solid ${border}40`,
+                    background: dark
+                      ? "rgba(255,255,255,0.02)"
+                      : "rgba(0,0,0,0.02)",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "clamp(13px,2vw,14px)",
+                      lineHeight: 1.85,
+                      color: textMuted,
+                    }}
+                  >
+                    {proj.details.techNotes}
+                  </p>
                 </div>
               )}
             </div>
@@ -487,28 +879,80 @@ function ProjectModal({ proj, dark, accent, accentAlt, text, textMuted, border, 
 
           {/* TAB: challenges */}
           {activeTab === "challenges" && (
-            <div style={{ display: "flex", flexDirection: "column", gap: 14, animation: "slideUp 0.35s ease" }}>
-              <p style={{ fontSize: 11, color: accent, fontFamily: "'Play',sans-serif", letterSpacing: 2, marginBottom: 6 }}>{m.technicalChallenges}</p>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 14,
+                animation: "slideUp 0.35s ease",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: 11,
+                  color: accent,
+                  fontFamily: "'Play',sans-serif",
+                  letterSpacing: 2,
+                  marginBottom: 6,
+                }}
+              >
+                {m.technicalChallenges}
+              </p>
               {challenges.length === 0 ? (
                 <p style={{ color: textMuted, fontSize: 14 }}>{m.comingSoon}</p>
-              ) : challenges.map((ch, i) => (
-                <div key={i} className="challenge-card" style={{ animationDelay: `${i*80}ms` }}>
-                  <div style={{
-                    width: 36, height: 36, borderRadius: 10, flexShrink: 0,
-                    background: `${ch.color || accent}18`, border: `1px solid ${ch.color || accent}35`,
-                    display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16,
-                  }}>
-                    <i className={`bi ${ch.icon || "bi-lightning-charge"}`} style={{ fontSize: 18, color: ch.color || accent }} />
+              ) : (
+                challenges.map((ch, i) => (
+                  <div
+                    key={i}
+                    className="challenge-card"
+                    style={{ animationDelay: `${i * 80}ms` }}
+                  >
+                    <div
+                      style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: 10,
+                        flexShrink: 0,
+                        background: `${ch.color || accent}18`,
+                        border: `1px solid ${ch.color || accent}35`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: 16,
+                      }}
+                    >
+                      <i
+                        className={`bi ${ch.icon || "bi-lightning-charge"}`}
+                        style={{ fontSize: 18, color: ch.color || accent }}
+                      />
+                    </div>
+                    <div>
+                      <p
+                        style={{
+                          fontSize: 13,
+                          fontWeight: 700,
+                          color: text,
+                          fontFamily: "'Play',sans-serif",
+                          marginBottom: 6,
+                        }}
+                      >
+                        {ch.title}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: "clamp(12px,2vw,13px)",
+                          lineHeight: 1.8,
+                          color: textMuted,
+                        }}
+                      >
+                        {ch.desc}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p style={{ fontSize: 13, fontWeight: 700, color: text, fontFamily: "'Play',sans-serif", marginBottom: 6 }}>{ch.title}</p>
-                    <p style={{ fontSize: "clamp(12px,2vw,13px)", lineHeight: 1.8, color: textMuted }}>{ch.desc}</p>
-                  </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           )}
-
         </div>
       </div>
     </div>
@@ -529,14 +973,19 @@ export function ProjectsSection({
   tx,
 }) {
   const [modalProj, setModalProj] = useState(null);
-  const bg      = dark ? "rgba(5,8,6,0.0)"    : "rgba(241,240,237,0.0)";
+  const [activeCategory, setActiveCategory] = useState("all");
+  const bg = dark ? "rgba(5,8,6,0.0)" : "rgba(241,240,237,0.0)";
   const frontBg = dark ? "rgba(11,20,13,0.82)" : "rgba(255,255,255,0.85)";
-  const backBg  = dark
+  const backBg = dark
     ? "linear-gradient(145deg,rgba(12,18,14,0.92) 0%,rgba(20,28,22,0.92) 100%)"
     : "linear-gradient(145deg,rgba(245,255,247,0.92) 0%,rgba(232,248,235,0.92) 100%)";
 
   return (
-    <section id="projects" aria-label="Proyectos" style={{ padding: "80px clamp(16px,6vw,140px)", background: bg }}>
+    <section
+      id="projects"
+      aria-label="Proyectos"
+      style={{ padding: "80px clamp(16px,6vw,140px)", background: bg }}
+    >
       <style>{`
         .ps-scene {
           width: min(340px, 90vw);
@@ -665,41 +1114,127 @@ export function ProjectsSection({
           width: 100%;
           max-width: 340px;
         }
+        .ps-filter-tabs {
+          display: flex;
+          gap: 12px;
+          margin-bottom: 40px;
+          flex-wrap: wrap;
+        }
+        .ps-filter-tab {
+          padding: 8px 16px;
+          border-radius: 20px;
+          border: 1px solid ${border};
+          background: transparent;
+          color: ${textMuted};
+          font-family: 'Play', sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+        .ps-filter-tab:hover {
+          border-color: ${accent}80;
+          color: ${text};
+        }
+        .ps-filter-tab.active {
+          background: ${accent}15;
+          border-color: ${accent};
+          color: ${accent};
+        }
       `}</style>
 
       {/* ─── Encabezado ─── */}
       <div data-aos="fade-up" data-aos-duration="700">
-        <p style={{ fontFamily: "'Play', sans-serif", fontSize: 12, color: accent, marginBottom: 12, letterSpacing: 2 }}>
-        </p>
-        <h2 style={{ fontSize: "clamp(1rem,3.5vw,2rem)", fontWeight: 800, letterSpacing: "-0.01em", color: text, fontFamily: "'Press Start 2P', cursive", lineHeight: 1.4 }}>
+        <p
+          style={{
+            fontFamily: "'Play', sans-serif",
+            fontSize: 12,
+            color: accent,
+            marginBottom: 12,
+            letterSpacing: 2,
+          }}
+        ></p>
+        <h2
+          style={{
+            fontSize: "clamp(1rem,3.5vw,2rem)",
+            fontWeight: 800,
+            letterSpacing: "-0.01em",
+            color: text,
+            fontFamily: "'Press Start 2P', cursive",
+            lineHeight: 1.4,
+          }}
+        >
           {tx.projects.title}
         </h2>
-        <p style={{ color: textMuted, fontSize: "clamp(13px,2vw,15px)", marginTop: 8, marginBottom: 40 }}>
+        <p
+          style={{
+            color: textMuted,
+            fontSize: "clamp(13px,2vw,15px)",
+            marginTop: 8,
+            marginBottom: 24,
+          }}
+        >
           {tx.projects.subtitle}
         </p>
+
+        {/* ─── Filtros de Categoría ─── */}
+        {tx.projects.categories && (
+          <div className="ps-filter-tabs">
+            {tx.projects.categories.map((cat) => (
+              <button
+                key={cat.id}
+                className={`ps-filter-tab${activeCategory === cat.id ? " active" : ""}`}
+                onClick={() => setActiveCategory(cat.id)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* ─── Tarjetas ─── */}
       <div className="projects-list">
-        {tx.projects.items.map((proj, pi) => (
+        {tx.projects.items
+          .filter((proj) => activeCategory === "all" || proj.category === activeCategory)
+          .map((proj, pi) => (
           <div
             key={pi}
             className="project-item"
+            style={proj.category === "landing" ? { maxWidth: 800, width: "100%" } : {}}
             data-aos="fade-up"
             data-aos-duration="800"
             data-aos-delay={pi * 100}
           >
-            <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
-              <TapFlipCard
-                proj={proj}
-                dark={dark}
-                accent={accent}
-                accentAlt={accentAlt}
-                text={text}
-                textMuted={textMuted}
-                tx={tx}
-                onOpenDetails={() => setModalProj(proj)}
-              />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                height: "100%",
+              }}
+            >
+              {proj.category === "landing" ? (
+                <HorizontalLandingCard 
+                  proj={proj}
+                  dark={dark}
+                  accent={accent}
+                  accentAlt={accentAlt}
+                  text={text}
+                  textMuted={textMuted}
+                  tx={tx}
+                />
+              ) : (
+                <TapFlipCard
+                  proj={proj}
+                  dark={dark}
+                  accent={accent}
+                  accentAlt={accentAlt}
+                  text={text}
+                  textMuted={textMuted}
+                  tx={tx}
+                  onOpenDetails={() => setModalProj(proj)}
+                />
+              )}
             </div>
           </div>
         ))}
@@ -725,82 +1260,227 @@ export function ProjectsSection({
 }
 
 /* ── Sub-componente para manejar tap en móvil ── */
-function TapFlipCard({ proj, dark, accent, accentAlt, text, textMuted, tx, onOpenDetails }) {
+function TapFlipCard({
+  proj,
+  dark,
+  accent,
+  accentAlt,
+  text,
+  textMuted,
+  tx,
+  onOpenDetails,
+}) {
   const [flipped, setFlipped] = useState(false);
 
   function techIconUrl(tech, dark) {
     const isBlack = tech.color === "#000000" || tech.color === "#181717";
-    const isLight = ["#F7DF1E","#FCC624","#61DAFB","#4FC08D"].includes(tech.color);
+    const isLight = ["#F7DF1E", "#FCC624", "#61DAFB", "#4FC08D"].includes(
+      tech.color,
+    );
     let color = tech.color;
     if (dark && isBlack) color = "#ffffff";
     if (!dark && isLight)
-      color = tech.color === "#F7DF1E" ? "#b8a800" : tech.color === "#FCC624" ? "#b08a00" : tech.color === "#61DAFB" ? "#0da0c0" : "#2a8a5e";
+      color =
+        tech.color === "#F7DF1E"
+          ? "#b8a800"
+          : tech.color === "#FCC624"
+            ? "#b08a00"
+            : tech.color === "#61DAFB"
+              ? "#0da0c0"
+              : "#2a8a5e";
     return `https://cdn.simpleicons.org/${tech.slug}/${color.replace("#", "")}`;
   }
 
   return (
     <div
       className={`ps-scene${flipped ? " flipped" : ""}`}
-      onClick={() => setFlipped(f => !f)}
+      onClick={() => setFlipped((f) => !f)}
     >
       <div className="ps-card">
-
         {/* ═══ FRENTE ═══ */}
         <div className="ps-face ps-front">
           {/* Imagen Superior */}
-          <div style={{ width: '100%', borderBottom: `1px solid ${dark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'}` }}>
-            <img 
-              src={proj.cardImage || proj.details?.images?.[0]?.src} 
+          <div
+            style={{
+              width: "100%",
+              borderBottom: `1px solid ${dark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)"}`,
+            }}
+          >
+            <img
+              src={proj.cardImage || proj.details?.images?.[0]?.src}
               alt={proj.name}
-              style={{ width: '100%', height: 'auto', display: 'block', aspectRatio: '1600/1120', objectFit: 'cover', transform: 'translateZ(0)', willChange: 'transform' }}
+              style={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+                aspectRatio: "1600/1120",
+                objectFit: "cover",
+                transform: "translateZ(0)",
+                willChange: "transform",
+              }}
               loading="lazy"
             />
           </div>
-          
+
           {/* Contenido Inferior */}
-          <div style={{ padding: 'clamp(18px,4vw,22px)', display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <h3 style={{ fontWeight: 800, fontSize: "clamp(16px,4vw,19px)", color: text, letterSpacing: "-0.02em", margin: 0 }}>{proj.name}</h3>
-              <div style={{ width: 38, height: 38, borderRadius: 10, flexShrink: 0, background: `linear-gradient(135deg,${accent}15,${accent}30)`, border: `1px solid ${accent}40`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <i className={`bi ${proj.icon}`} style={{ fontSize: 18, color: accent }} />
+          <div
+            style={{
+              padding: "clamp(18px,4vw,22px)",
+              display: "flex",
+              flexDirection: "column",
+              gap: 12,
+              flex: 1,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <h3
+                style={{
+                  fontWeight: 800,
+                  fontSize: "clamp(16px,4vw,19px)",
+                  color: text,
+                  letterSpacing: "-0.02em",
+                  margin: 0,
+                }}
+              >
+                {proj.name}
+              </h3>
+              <div
+                style={{
+                  width: 38,
+                  height: 38,
+                  borderRadius: 10,
+                  flexShrink: 0,
+                  background: `linear-gradient(135deg,${accent}15,${accent}30)`,
+                  border: `1px solid ${accent}40`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <i
+                  className={`bi ${proj.icon}`}
+                  style={{ fontSize: 18, color: accent }}
+                />
               </div>
             </div>
-            
-            <p style={{ fontSize: "clamp(12.5px,3vw,13.5px)", lineHeight: 1.6, color: textMuted, margin: 0 }}>{proj.desc}</p>
-            
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: 10 }}>
-              <div className="ps-badge"><span className="ps-dot" />{tx.projects.inProduction}</div>
-              <div className="ps-hint" style={{ position: 'static', opacity: 0.6, fontSize: '10px' }}><i className="bi bi-arrow-repeat" style={{ fontSize: 11 }} />{tx.projects.hoverHint}</div>
+
+            <p
+              style={{
+                fontSize: "clamp(12.5px,3vw,13.5px)",
+                lineHeight: 1.6,
+                color: textMuted,
+                margin: 0,
+              }}
+            >
+              {proj.desc}
+            </p>
+
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "auto",
+                paddingTop: 10,
+              }}
+            >
+              <div className="ps-badge">
+                <span className="ps-dot" />
+                {tx.projects.inProduction}
+              </div>
+              <div
+                className="ps-hint"
+                style={{ position: "static", opacity: 0.6, fontSize: "10px" }}
+              >
+                <i className="bi bi-arrow-repeat" style={{ fontSize: 11 }} />
+                {tx.projects.hoverHint}
+              </div>
             </div>
           </div>
-          <div className="ps-tap-hint" style={{ position: "absolute", bottom: 11, right: 15, fontSize: "9.5px", fontFamily: "'Play', sans-serif", color: textMuted, letterSpacing: "0.05em", alignItems: "center", gap: 4, opacity: 0.5, pointerEvents: "none" }}>
-            <i className="bi bi-hand-index" style={{ fontSize: 11 }} />{tx.projects.tapHint}
+          <div
+            className="ps-tap-hint"
+            style={{
+              position: "absolute",
+              bottom: 11,
+              right: 15,
+              fontSize: "9.5px",
+              fontFamily: "'Play', sans-serif",
+              color: textMuted,
+              letterSpacing: "0.05em",
+              alignItems: "center",
+              gap: 4,
+              opacity: 0.5,
+              pointerEvents: "none",
+            }}
+          >
+            <i className="bi bi-hand-index" style={{ fontSize: 11 }} />
+            {tx.projects.tapHint}
           </div>
         </div>
 
         {/* ═══ DORSO ═══ */}
         <div className="ps-face ps-back">
           <div>
-            <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: accent, fontFamily: "'Play', sans-serif", marginBottom: 2 }}>{tx.projects.techStack}</p>
-            <p style={{ fontSize: "clamp(14px,4vw,17px)", fontWeight: 800, color: text, fontFamily: "'Play', sans-serif" }}>{proj.name}</p>
+            <p
+              style={{
+                fontSize: 10,
+                fontWeight: 700,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: accent,
+                fontFamily: "'Play', sans-serif",
+                marginBottom: 2,
+              }}
+            >
+              {tx.projects.techStack}
+            </p>
+            <p
+              style={{
+                fontSize: "clamp(14px,4vw,17px)",
+                fontWeight: 800,
+                color: text,
+                fontFamily: "'Play', sans-serif",
+              }}
+            >
+              {proj.name}
+            </p>
           </div>
 
           <div className="ps-tech-grid">
             {proj.techs.map((tech, ti) => (
               <div key={ti} className="ps-chip">
-                <img src={techIconUrl(tech, dark)} alt={tech.name} loading="lazy" onError={e => { e.target.style.display = "none"; }} />
+                <img
+                  src={techIconUrl(tech, dark)}
+                  alt={tech.name}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.style.display = "none";
+                  }}
+                />
                 <span className="ps-chip-name">{tech.name}</span>
               </div>
             ))}
           </div>
 
           {/* Fila de botones */}
-          <div className="ps-btn-row" onClick={e => e.stopPropagation()}>
+          <div className="ps-btn-row" onClick={(e) => e.stopPropagation()}>
             <button
               className="ps-details-btn"
-              onClick={(e) => { e.stopPropagation(); onOpenDetails(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenDetails();
+              }}
             >
-              <i className="bi bi-layout-text-window-reverse" style={{ fontSize: 13 }} />
+              <i
+                className="bi bi-layout-text-window-reverse"
+                style={{ fontSize: 13 }}
+              />
               {tx.projects.seeDetails}
             </button>
             <a
@@ -808,13 +1488,207 @@ function TapFlipCard({ proj, dark, accent, accentAlt, text, textMuted, tx, onOpe
               href={proj.link}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={e => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
             >
-              {tx.projects.cta}&nbsp;<i className="bi bi-arrow-up-right" />
+              {tx.projects.cta}&nbsp;
+              <i className="bi bi-arrow-up-right" />
             </a>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
 
+/* ── Tarjeta Horizontal para Landing Pages ── */
+function HorizontalLandingCard({ proj, dark, accent, accentAlt, text, textMuted, tx }) {
+  const bgImg = proj.cardImage || proj.details?.images?.[0]?.src || "";
+  
+  return (
+    <div
+      className="hlc-container"
+      style={{
+        position: "relative",
+        width: "100%",
+        minHeight: 280,
+        borderRadius: 22,
+        overflow: "hidden",
+        border: `1px solid ${dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.09)"}`,
+        boxShadow: `0 15px 35px ${dark ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.1)"}`,
+        display: "flex",
+      }}
+    >
+      <style>{`
+        .hlc-container:hover .hlc-bg {
+          transform: scale(1.04);
+        }
+        .hlc-content {
+          width: 55%;
+        }
+        @media (max-width: 640px) {
+          .hlc-content {
+            width: 100%;
+          }
+          .hlc-overlay {
+            background: ${dark 
+              ? "linear-gradient(to top, rgba(10,14,36,0.98) 0%, rgba(10,14,36,0.85) 60%, rgba(10,14,36,0.2) 100%)" 
+              : "linear-gradient(to top, rgba(245,247,255,0.98) 0%, rgba(245,247,255,0.85) 60%, rgba(255,255,255,0.2) 100%)"} !important;
+          }
+        }
+      `}</style>
+      
+      {/* Background Image */}
+      <div 
+        className="hlc-bg"
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: bgImg ? `url(${bgImg})` : "none",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+          backgroundColor: dark ? "#111" : "#eee", // Fallback
+        }}
+      />
+      
+      {/* Blur filter for the left side to make text pop */}
+      <div 
+        style={{
+          position: "absolute",
+          inset: 0,
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+          maskImage: "linear-gradient(to right, black 0%, black 45%, transparent 75%)",
+          WebkitMaskImage: "linear-gradient(to right, black 0%, black 45%, transparent 75%)",
+          zIndex: 1,
+        }}
+      />
+      
+      {/* Overlay Gradient */}
+      <div 
+        className="hlc-overlay"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: dark 
+            ? "linear-gradient(to right, rgba(10,14,36,0.98) 0%, rgba(10,14,36,0.9) 45%, rgba(10,14,36,0.1) 100%)"
+            : "linear-gradient(to right, rgba(245,247,255,0.98) 0%, rgba(245,247,255,0.9) 45%, rgba(255,255,255,0.1) 100%)",
+          zIndex: 1,
+        }}
+      />
+      
+      {/* Content */}
+      <div
+        className="hlc-content"
+        style={{
+          position: "relative",
+          zIndex: 2,
+          padding: "clamp(20px, 4vw, 36px)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+          <div
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: 8,
+              background: `linear-gradient(135deg, ${accent}15, ${accent}30)`,
+              border: `1px solid ${accent}40`,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <i className={`bi ${proj.icon}`} style={{ fontSize: 15, color: accent }} />
+          </div>
+          <span style={{ fontSize: 11, fontWeight: 700, color: accent, letterSpacing: 1.5, fontFamily: "'Play', sans-serif" }}>
+            LANDING PAGE
+          </span>
+        </div>
+        
+        <h3 style={{ 
+          fontSize: "clamp(20px, 3vw, 26px)", 
+          fontWeight: 800, 
+          color: text, 
+          marginBottom: 12, 
+          fontFamily: "'Press Start 2P', cursive", 
+          lineHeight: 1.3,
+          textShadow: dark ? "0 2px 10px rgba(0,0,0,0.8)" : "0 2px 10px rgba(255,255,255,0.8)"
+        }}>
+          {proj.name}
+        </h3>
+        
+        <p style={{ 
+          fontSize: "clamp(13px, 2vw, 15px)", 
+          color: textMuted, 
+          lineHeight: 1.6, 
+          marginBottom: 24,
+          textShadow: dark ? "0 2px 8px rgba(0,0,0,0.8)" : "0 2px 8px rgba(255,255,255,0.8)"
+        }}>
+          {proj.desc}
+        </p>
+        
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 24 }}>
+          {proj.techs.map((tech, i) => (
+             <span key={i} style={{ 
+               display: "inline-flex",
+               alignItems: "center",
+               gap: 6,
+               fontSize: 10, 
+               fontWeight: 700, 
+               color: textMuted, 
+               background: dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)", 
+               border: `1px solid ${dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"}`,
+               padding: "5px 12px", 
+               borderRadius: 20,
+               fontFamily: "'Play', sans-serif"
+             }}>
+               <img 
+                 src={techIconUrl(tech, dark)} 
+                 alt={tech.name}
+                 style={{ width: 14, height: 14, objectFit: "contain" }}
+                 loading="lazy"
+               />
+               {tech.name}
+             </span>
+          ))}
+        </div>
+        
+        <div style={{ marginTop: "auto", paddingTop: 10 }}>
+          <a
+            href={proj.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "11px 22px",
+              borderRadius: 12,
+              background: `linear-gradient(135deg, ${accent}, ${accentAlt || accent}cc)`,
+              color: "#fff",
+              fontFamily: "'Play', sans-serif",
+              fontWeight: 700,
+              fontSize: 13,
+              textDecoration: "none",
+              boxShadow: `0 4px 20px ${accent}50`,
+              transition: "transform 0.2s, opacity 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.opacity = "0.9";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "none";
+              e.currentTarget.style.opacity = "1";
+            }}
+          >
+            {tx.projects.cta} <i className="bi bi-arrow-up-right" />
+          </a>
+        </div>
       </div>
     </div>
   );

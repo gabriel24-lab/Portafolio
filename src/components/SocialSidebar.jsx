@@ -9,9 +9,21 @@
 
 export function SocialSidebar({ dark, accent, textMuted, border }) {
   const socials = [
-    { icon: <IconInstagram />, href: "https://www.instagram.com/gabrrlxz.dev/", label: "Instagram" },
-    { icon: <IconLinkedIn />, href: "https://www.linkedin.com/in/gabriel-mejia-silva-36a3b4412/?skipRedirect=true", label: "LinkedIn" },
-    { icon: <IconGitHub />, href: "https://github.com/gabriel24-lab", label: "GitHub" },
+    {
+      icon: <IconInstagram />,
+      href: "https://www.instagram.com/gabrrlxz.dev/",
+      label: "Instagram",
+    },
+    {
+      icon: <IconLinkedIn />,
+      href: "https://www.linkedin.com/in/gabriel-mejia-silva-36a3b4412/?skipRedirect=true",
+      label: "LinkedIn",
+    },
+    {
+      icon: <IconGitHub />,
+      href: "https://github.com/gabriel24-lab",
+      label: "GitHub",
+    },
   ];
 
   return (
@@ -25,8 +37,15 @@ export function SocialSidebar({ dark, accent, textMuted, border }) {
       `}</style>
       <div className="social-sidebar">
         {socials.map((s, i) => (
-          <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" className="social-icon-btn" title={s.label}
-            style={{ animationDelay: `${i * 0.07}s` }}>
+          <a
+            key={i}
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon-btn"
+            title={s.label}
+            style={{ animationDelay: `${i * 0.07}s` }}
+          >
             {s.icon}
           </a>
         ))}

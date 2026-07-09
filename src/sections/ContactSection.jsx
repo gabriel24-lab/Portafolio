@@ -1,7 +1,23 @@
 import { useState } from "react";
-import { IcMail, IcLinkedIn, IcGitHub2, IcTwitter2, IcLocation } from "../components/icons/SocialIcons";
+import {
+  IcMail,
+  IcLinkedIn,
+  IcGitHub2,
+  IcTwitter2,
+  IcLocation,
+} from "../components/icons/SocialIcons";
 
-export function ContactSection({ dark, accent, accentAlt, surface, surfaceAlt, border, text, textMuted, tx }) {
+export function ContactSection({
+  dark,
+  accent,
+  accentAlt,
+  surface,
+  surfaceAlt,
+  border,
+  text,
+  textMuted,
+  tx,
+}) {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle");
   const [errors, setErrors] = useState({});
@@ -26,23 +42,77 @@ export function ContactSection({ dark, accent, accentAlt, surface, surfaceAlt, b
       const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ service_id: SERVICE_ID, template_id: TEMPLATE_ID, user_id: PUBLIC_KEY, template_params: { from_name: form.name, from_email: form.email, message: form.message, to_email: "TU_CORREO@gmail.com" } }),
+        body: JSON.stringify({
+          service_id: SERVICE_ID,
+          template_id: TEMPLATE_ID,
+          user_id: PUBLIC_KEY,
+          template_params: {
+            from_name: form.name,
+            from_email: form.email,
+            message: form.message,
+            to_email: "TU_CORREO@gmail.com",
+          },
+        }),
       });
-      if (res.ok) { setStatus("success"); setForm({ name: "", email: "", message: "" }); } else throw new Error();
-    } catch { setStatus("error"); }
+      if (res.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "" });
+      } else throw new Error();
+    } catch {
+      setStatus("error");
+    }
     setTimeout(() => setStatus("idle"), 5000);
   }
 
-  const inp = { background: dark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", border: `1.5px solid ${border}`, borderRadius: 12, padding: "12px 14px", color: text, fontFamily: "'Play', sans-serif", fontSize: "clamp(13px,3vw,14px)", width: "100%", outline: "none", transition: "border-color 0.2s, box-shadow 0.2s", boxSizing: "border-box" };
+  const inp = {
+    background: dark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)",
+    border: `1.5px solid ${border}`,
+    borderRadius: 12,
+    padding: "12px 14px",
+    color: text,
+    fontFamily: "'Play', sans-serif",
+    fontSize: "clamp(13px,3vw,14px)",
+    width: "100%",
+    outline: "none",
+    transition: "border-color 0.2s, box-shadow 0.2s",
+    boxSizing: "border-box",
+  };
   const contactLinks = [
-    { icon: <IcMail />, label: tx.contact.email, href: "mailto:gabrielmejiasilva5@gmail.com", color: "#6c63ff" },
-    { icon: <IcLinkedIn />, label: tx.contact.linkedin, href: "https://www.linkedin.com/in/gabriel-mejia-silva-36a3b4412/?skipRedirect=true", color: "#0A66C2" },
-    { icon: <IcGitHub2 />, label: tx.contact.github, href: "https://github.com/gabriel24-lab", color: dark ? "#e0e0e0" : "#181717" },
+    {
+      icon: <IcMail />,
+      label: tx.contact.email,
+      href: "mailto:gabrielmejiasilva5@gmail.com",
+      color: "#6c63ff",
+    },
+    {
+      icon: <IcLinkedIn />,
+      label: tx.contact.linkedin,
+      href: "https://www.linkedin.com/in/gabriel-mejia-silva-36a3b4412/?skipRedirect=true",
+      color: "#0A66C2",
+    },
+    {
+      icon: <IcGitHub2 />,
+      label: tx.contact.github,
+      href: "https://github.com/gabriel24-lab",
+      color: dark ? "#e0e0e0" : "#181717",
+    },
   ];
-  const labelStyle = { fontSize: 12, fontWeight: 600, color: textMuted, marginBottom: 6, display: "block", fontFamily: "'Play', sans-serif", letterSpacing: 0.5 };
+  const labelStyle = {
+    fontSize: 12,
+    fontWeight: 600,
+    color: textMuted,
+    marginBottom: 6,
+    display: "block",
+    fontFamily: "'Play', sans-serif",
+    letterSpacing: 0.5,
+  };
 
   return (
-    <section id="contact" aria-label="Contacto" style={{ padding: "80px clamp(16px,6vw,140px)" }}>
+    <section
+      id="contact"
+      aria-label="Contacto"
+      style={{ padding: "80px clamp(16px,6vw,140px)" }}
+    >
       <style>{`
         .contact-input:focus { border-color: ${accent} !important; box-shadow: 0 0 0 3px ${accent}18 !important; }
         .contact-input.err { border-color: #ff6b6b !important; }
@@ -75,37 +145,98 @@ export function ContactSection({ dark, accent, accentAlt, surface, surfaceAlt, b
 
       {/* Header */}
       <div data-aos="fade-up" data-aos-duration="700">
-        <p style={{ fontFamily: "'Play', sans-serif", fontSize: 12, color: accent, marginBottom: 12, letterSpacing: 2 }}></p>
-        <h2 style={{ fontSize: "clamp(1rem,3.5vw,2rem)", fontWeight: 800, letterSpacing: "-0.01em", color: text, fontFamily: "'Press Start 2P', cursive", lineHeight: 1.4 }}>{tx.contact.title}</h2>
-        <p style={{ color: textMuted, fontSize: "clamp(13px,2vw,15px)", marginTop: 8, marginBottom: 44 }}>{tx.contact.subtitle}</p>
+        <p
+          style={{
+            fontFamily: "'Play', sans-serif",
+            fontSize: 12,
+            color: accent,
+            marginBottom: 12,
+            letterSpacing: 2,
+          }}
+        ></p>
+        <h2
+          style={{
+            fontSize: "clamp(1rem,3.5vw,2rem)",
+            fontWeight: 800,
+            letterSpacing: "-0.01em",
+            color: text,
+            fontFamily: "'Press Start 2P', cursive",
+            lineHeight: 1.4,
+          }}
+        >
+          {tx.contact.title}
+        </h2>
+        <p
+          style={{
+            color: textMuted,
+            fontSize: "clamp(13px,2vw,15px)",
+            marginTop: 8,
+            marginBottom: 44,
+          }}
+        >
+          {tx.contact.subtitle}
+        </p>
       </div>
 
       <div className="contact-grid">
-
         {/* Links de contacto */}
-        <div className="contact-links-col" data-aos="fade-right" data-aos-duration="800" data-aos-delay="150">
-          <p style={{ fontSize: "clamp(12px,2vw,13px)", color: textMuted, lineHeight: 1.8, marginBottom: 28 }}>{tx.contact.leftDesc}</p>
+        <div
+          className="contact-links-col"
+          data-aos="fade-right"
+          data-aos-duration="800"
+          data-aos-delay="150"
+        >
+          <p
+            style={{
+              fontSize: "clamp(12px,2vw,13px)",
+              color: textMuted,
+              lineHeight: 1.8,
+              marginBottom: 28,
+            }}
+          >
+            {tx.contact.leftDesc}
+          </p>
           <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-            {contactLinks.map((cl, i) => cl.href ? (
-              <a
-                key={i}
-                href={cl.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-link"
-                data-aos="fade-right"
-                data-aos-duration="600"
-                data-aos-delay={200 + i * 80}
-              >
-                <div className="cl-icon" style={{ background: cl.color + "1a", color: cl.color }}>{cl.icon}</div>
-                <span className="cl-label" style={{ color: text }}>{cl.label}</span>
-              </a>
-            ) : (
-              <div key={i} className="contact-link" style={{ cursor: "default" }}>
-                <div className="cl-icon" style={{ background: cl.color + "1a", color: cl.color }}>{cl.icon}</div>
-                <span className="cl-label" style={{ color: textMuted }}>{cl.label}</span>
-              </div>
-            ))}
+            {contactLinks.map((cl, i) =>
+              cl.href ? (
+                <a
+                  key={i}
+                  href={cl.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-link"
+                  data-aos="fade-right"
+                  data-aos-duration="600"
+                  data-aos-delay={200 + i * 80}
+                >
+                  <div
+                    className="cl-icon"
+                    style={{ background: cl.color + "1a", color: cl.color }}
+                  >
+                    {cl.icon}
+                  </div>
+                  <span className="cl-label" style={{ color: text }}>
+                    {cl.label}
+                  </span>
+                </a>
+              ) : (
+                <div
+                  key={i}
+                  className="contact-link"
+                  style={{ cursor: "default" }}
+                >
+                  <div
+                    className="cl-icon"
+                    style={{ background: cl.color + "1a", color: cl.color }}
+                  >
+                    {cl.icon}
+                  </div>
+                  <span className="cl-label" style={{ color: textMuted }}>
+                    {cl.label}
+                  </span>
+                </div>
+              ),
+            )}
           </div>
         </div>
 
@@ -118,38 +249,161 @@ export function ContactSection({ dark, accent, accentAlt, surface, surfaceAlt, b
           data-aos-duration="800"
           data-aos-delay="200"
         >
-          <div className="contact-form-box" style={{ background: surface, border: `1px solid ${border}`, borderRadius: 22, padding: "32px 28px" }}>
-            <h3 style={{ fontSize: "clamp(10px,2.5vw,13px)", fontWeight: 700, marginBottom: 4, color: text, fontFamily: "'Press Start 2P', cursive", lineHeight: 1.6 }}>{tx.contact.formTitle}</h3>
-            <p style={{ fontSize: "clamp(12px,2vw,13px)", color: textMuted, marginBottom: 24 }}>{tx.contact.formSub}</p>
+          <div
+            className="contact-form-box"
+            style={{
+              background: surface,
+              border: `1px solid ${border}`,
+              borderRadius: 22,
+              padding: "32px 28px",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "clamp(10px,2.5vw,13px)",
+                fontWeight: 700,
+                marginBottom: 4,
+                color: text,
+                fontFamily: "'Press Start 2P', cursive",
+                lineHeight: 1.6,
+              }}
+            >
+              {tx.contact.formTitle}
+            </h3>
+            <p
+              style={{
+                fontSize: "clamp(12px,2vw,13px)",
+                color: textMuted,
+                marginBottom: 24,
+              }}
+            >
+              {tx.contact.formSub}
+            </p>
             <form onSubmit={handleSubmit} noValidate>
               <div className="form-2col">
                 <div>
                   <label style={labelStyle}>{tx.contact.formName}</label>
-                  <input className={`contact-input${errors.name ? " err" : ""}`} style={inp} type="text" placeholder={tx.contact.placeholderName} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
-                  {errors.name && <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>{tx.contact.errorRequired}</p>}
+                  <input
+                    className={`contact-input${errors.name ? " err" : ""}`}
+                    style={inp}
+                    type="text"
+                    placeholder={tx.contact.placeholderName}
+                    value={form.name}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, name: e.target.value }))
+                    }
+                  />
+                  {errors.name && (
+                    <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>
+                      {tx.contact.errorRequired}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label style={labelStyle}>{tx.contact.formEmail}</label>
-                  <input className={`contact-input${errors.email ? " err" : ""}`} style={inp} type="email" placeholder={tx.contact.placeholderEmail} value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
-                  {errors.email && <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>{tx.contact.errorEmail}</p>}
+                  <input
+                    className={`contact-input${errors.email ? " err" : ""}`}
+                    style={inp}
+                    type="email"
+                    placeholder={tx.contact.placeholderEmail}
+                    value={form.email}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, email: e.target.value }))
+                    }
+                  />
+                  {errors.email && (
+                    <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>
+                      {tx.contact.errorEmail}
+                    </p>
+                  )}
                 </div>
               </div>
               <div style={{ marginBottom: 18 }}>
                 <label style={labelStyle}>{tx.contact.formMessage}</label>
-                <textarea className={`contact-input${errors.message ? " err" : ""}`} style={{ ...inp, minHeight: 120, resize: "vertical", lineHeight: 1.7 }} placeholder={tx.contact.placeholderMessage} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} />
-                {errors.message && <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>{tx.contact.errorMessage}</p>}
+                <textarea
+                  className={`contact-input${errors.message ? " err" : ""}`}
+                  style={{
+                    ...inp,
+                    minHeight: 120,
+                    resize: "vertical",
+                    lineHeight: 1.7,
+                  }}
+                  placeholder={tx.contact.placeholderMessage}
+                  value={form.message}
+                  onChange={(e) =>
+                    setForm((f) => ({ ...f, message: e.target.value }))
+                  }
+                />
+                {errors.message && (
+                  <p style={{ fontSize: 11, color: "#ff6b6b", marginTop: 4 }}>
+                    {tx.contact.errorMessage}
+                  </p>
+                )}
               </div>
-              <button type="submit" disabled={status === "sending"} style={{ width: "100%", padding: "14px", background: status === "success" ? "#00c896" : status === "error" ? "#ff6b6b" : accent, color: "#fff", border: "none", borderRadius: 12, fontFamily: "'Play', sans-serif", fontWeight: 700, fontSize: "clamp(13px,3vw,15px)", cursor: status === "sending" ? "not-allowed" : "pointer", transition: "all 0.3s", opacity: status === "sending" ? 0.7 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                {status === "idle" && <>{tx.contact.formSend} <i className="bi bi-send" /></>}
-                {status === "sending" && <><i className="bi bi-hourglass-split" /> {tx.contact.formSending}</>}
-                {status === "success" && <><i className="bi bi-check-circle" /> {tx.contact.formSuccess}</>}
-                {status === "error" && <><i className="bi bi-x-circle" /> {tx.contact.formError}</>}
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                style={{
+                  width: "100%",
+                  padding: "14px",
+                  background:
+                    status === "success"
+                      ? "#00c896"
+                      : status === "error"
+                        ? "#ff6b6b"
+                        : accent,
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: 12,
+                  fontFamily: "'Play', sans-serif",
+                  fontWeight: 700,
+                  fontSize: "clamp(13px,3vw,15px)",
+                  cursor: status === "sending" ? "not-allowed" : "pointer",
+                  transition: "all 0.3s",
+                  opacity: status === "sending" ? 0.7 : 1,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 8,
+                }}
+              >
+                {status === "idle" && (
+                  <>
+                    {tx.contact.formSend} <i className="bi bi-send" />
+                  </>
+                )}
+                {status === "sending" && (
+                  <>
+                    <i className="bi bi-hourglass-split" />{" "}
+                    {tx.contact.formSending}
+                  </>
+                )}
+                {status === "success" && (
+                  <>
+                    <i className="bi bi-check-circle" />{" "}
+                    {tx.contact.formSuccess}
+                  </>
+                )}
+                {status === "error" && (
+                  <>
+                    <i className="bi bi-x-circle" /> {tx.contact.formError}
+                  </>
+                )}
               </button>
-              <p style={{ fontSize: 11, color: textMuted, textAlign: "center", marginTop: 12, lineHeight: 1.6 }}><i className="bi bi-shield-lock" /> {tx.contact.formNote}</p>
+              <p
+                style={{
+                  fontSize: 11,
+                  color: textMuted,
+                  textAlign: "center",
+                  marginTop: 12,
+                  lineHeight: 1.6,
+                }}
+              >
+                <i className="bi bi-shield-lock" /> {tx.contact.formNote}
+              </p>
             </form>
           </div>
         </div>
-
       </div>
     </section>
   );

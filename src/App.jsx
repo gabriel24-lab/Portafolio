@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import AOS from "aos";
 import miFoto from "./assets/mi-foto.webp";
 import iconsImg from "./assets/icons.jpg";
@@ -38,28 +38,55 @@ export default function Portfolio() {
   }, [dark, lang]);
 
   useEffect(() => {
-    const ids = ["hero", "about", "skills", "experience", "projects", "contact"];
-    const obs = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) setActiveSection(e.target.id); }), { threshold: 0.4 });
-    ids.forEach((id) => { const el = document.getElementById(id); if (el) obs.observe(el); });
+    const ids = [
+      "hero",
+      "about",
+      "skills",
+      "experience",
+      "projects",
+      "contact",
+    ];
+    const obs = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActiveSection(e.target.id);
+        }),
+      { threshold: 0.4 },
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
     return () => obs.disconnect();
   }, []);
 
-  const scrollTo = (id) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setMenuOpen(false); };
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
+  };
 
   // ── Paleta ──
   // El canvas de GlobalParticles es el fondo real (opaco).
   // Las secciones usan fondos muy semitransparentes para dejar ver el flow field.
-  const bg         = dark ? "rgba(6,8,22,0.0)"      : "rgba(240,242,255,0.0)";   // sin fondo propio
-  const surface    = dark ? "rgba(14,16,40,0.82)"   : "rgba(255,255,255,0.85)";
-  const surfaceAlt = dark ? "rgba(20,24,60,0.80)"   : "rgba(224,228,255,0.82)";
-  const border     = dark ? "#1e2460" : "#b8c0f0";
-  const text       = dark ? "#e0e4ff" : "#0d1040";
-  const textMuted  = dark ? "#7b8cde" : "#4a5ab0";
-  const accent     = "#6c8eff";
-  const accentAlt  = "#3f5efb";
+  const bg = dark ? "rgba(6,8,22,0.0)" : "rgba(240,242,255,0.0)"; // sin fondo propio
+  const surface = dark ? "rgba(14,16,40,0.82)" : "rgba(255,255,255,0.85)";
+  const surfaceAlt = dark ? "rgba(20,24,60,0.80)" : "rgba(224,228,255,0.82)";
+  const border = dark ? "#1e2460" : "#b8c0f0";
+  const text = dark ? "#e0e4ff" : "#0d1040";
+  const textMuted = dark ? "#7b8cde" : "#4a5ab0";
+  const accent = "#6c8eff";
+  const accentAlt = "#3f5efb";
 
   return (
-    <div style={{ color: text, fontFamily: "'Play', sans-serif", minHeight: "100vh", transition: "color 0.3s", position: "relative" }}>
+    <div
+      style={{
+        color: text,
+        fontFamily: "'Play', sans-serif",
+        minHeight: "100vh",
+        transition: "color 0.3s",
+        position: "relative",
+      }}
+    >
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -82,16 +109,101 @@ export default function Portfolio() {
 
       {/* Contenido sobre las partículas */}
       <div style={{ position: "relative", zIndex: 1 }}>
-      <SocialSidebar dark={dark} accent={accent} textMuted={textMuted} border={border} />
-      <Navbar dark={dark} setDark={setDark} lang={lang} setLang={setLang} tx={tx} activeSection={activeSection} scrollTo={scrollTo} menuOpen={menuOpen} setMenuOpen={setMenuOpen} accent={accent} textMuted={textMuted} border={border} surface={surface} text={text} />
-      <HeroSection dark={dark} accent={accent} accentAlt={accentAlt} bg={bg} surface={surface} surfaceAlt={surfaceAlt} border={border} text={text} textMuted={textMuted} tx={tx} photo={photo} scrollTo={scrollTo} />
-      <AboutSection dark={dark} accent={accent} accentAlt={accentAlt} surface={surface} border={border} text={text} textMuted={textMuted} tx={tx} />
-      <SkillsSection dark={dark} accent={accent} accentAlt={accentAlt} surface={surface} border={border} text={text} textMuted={textMuted} tx={tx} />
-      <ExperienceSection dark={dark} accent={accent} accentAlt={accentAlt} surface={surface} border={border} text={text} textMuted={textMuted} tx={tx} />
-      <ProjectsSection dark={dark} accent={accent} accentAlt={accentAlt} surface={surface} border={border} text={text} textMuted={textMuted} tx={tx} />
-      <ContactSection dark={dark} accent={accent} accentAlt={accentAlt} surface={surface} surfaceAlt={surfaceAlt} border={border} text={text} textMuted={textMuted} tx={tx} />
-      <footer style={{ padding: "24px clamp(16px,6vw,140px)", borderTop: `1px solid ${border}40` }} />
-      </div>{/* fin z-index wrapper */}
+        <SocialSidebar
+          dark={dark}
+          accent={accent}
+          textMuted={textMuted}
+          border={border}
+        />
+        <Navbar
+          dark={dark}
+          setDark={setDark}
+          lang={lang}
+          setLang={setLang}
+          tx={tx}
+          activeSection={activeSection}
+          scrollTo={scrollTo}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+          accent={accent}
+          textMuted={textMuted}
+          border={border}
+          surface={surface}
+          text={text}
+        />
+        <HeroSection
+          dark={dark}
+          accent={accent}
+          accentAlt={accentAlt}
+          bg={bg}
+          surface={surface}
+          surfaceAlt={surfaceAlt}
+          border={border}
+          text={text}
+          textMuted={textMuted}
+          tx={tx}
+          photo={photo}
+          scrollTo={scrollTo}
+        />
+        <AboutSection
+          dark={dark}
+          accent={accent}
+          accentAlt={accentAlt}
+          surface={surface}
+          border={border}
+          text={text}
+          textMuted={textMuted}
+          tx={tx}
+        />
+        <SkillsSection
+          dark={dark}
+          accent={accent}
+          accentAlt={accentAlt}
+          surface={surface}
+          border={border}
+          text={text}
+          textMuted={textMuted}
+          tx={tx}
+        />
+        <ExperienceSection
+          dark={dark}
+          accent={accent}
+          accentAlt={accentAlt}
+          surface={surface}
+          border={border}
+          text={text}
+          textMuted={textMuted}
+          tx={tx}
+        />
+        <ProjectsSection
+          dark={dark}
+          accent={accent}
+          accentAlt={accentAlt}
+          surface={surface}
+          border={border}
+          text={text}
+          textMuted={textMuted}
+          tx={tx}
+        />
+        <ContactSection
+          dark={dark}
+          accent={accent}
+          accentAlt={accentAlt}
+          surface={surface}
+          surfaceAlt={surfaceAlt}
+          border={border}
+          text={text}
+          textMuted={textMuted}
+          tx={tx}
+        />
+        <footer
+          style={{
+            padding: "24px clamp(16px,6vw,140px)",
+            borderTop: `1px solid ${border}40`,
+          }}
+        />
+      </div>
+      {/* fin z-index wrapper */}
     </div>
   );
 }

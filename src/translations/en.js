@@ -1,10 +1,17 @@
 export const en = {
-  nav: { about: "About me", skills: "Skills", experience: "Studies", projects: "Projects", contact: "Contact" },
+  nav: {
+    about: "About me",
+    skills: "Skills",
+    experience: "Studies",
+    projects: "Projects",
+    contact: "Contact",
+  },
   hero: {
     greeting: "Hi, I'm",
     name: "Gabriel Mejia",
     title: "Software developer",
-    subtitle: "Passionate about continuous learning and creating technology solutions that deliver real impact.",
+    subtitle:
+      "Passionate about continuous learning and creating technology solutions that deliver real impact.",
     downloadCV: "Download CV",
     contact: "Contact me",
     photoAlt: "Profile photo",
@@ -25,22 +32,54 @@ export const en = {
       {
         name: "Frontend",
         icon: "⬡",
-        items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Redux", "GraphQL"],
+        items: [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Framer Motion",
+          "Redux",
+          "GraphQL",
+        ],
       },
       {
         name: "Backend",
         icon: "⬡",
-        items: ["Node.js", "Express", "NestJS", "PostgreSQL", "MongoDB", "Redis", "REST APIs"],
+        items: [
+          "Node.js",
+          "Express",
+          "NestJS",
+          "PostgreSQL",
+          "MongoDB",
+          "Redis",
+          "REST APIs",
+        ],
       },
       {
         name: "DevOps & Cloud",
         icon: "⬡",
-        items: ["AWS", "Docker", "Kubernetes", "CI/CD", "GitHub Actions", "Terraform", "Linux"],
+        items: [
+          "AWS",
+          "Docker",
+          "Kubernetes",
+          "CI/CD",
+          "GitHub Actions",
+          "Terraform",
+          "Linux",
+        ],
       },
       {
         name: "Tools",
         icon: "⬡",
-        items: ["Git", "Figma", "Jest", "Cypress", "Webpack", "Storybook", "Postman"],
+        items: [
+          "Git",
+          "Figma",
+          "Jest",
+          "Cypress",
+          "Webpack",
+          "Storybook",
+          "Postman",
+        ],
       },
     ],
   },
@@ -53,22 +92,43 @@ export const en = {
         company: "National Learning Service (SENA)",
         period: "2024 – Present",
         location: "Colombia",
-        description: "Currently enrolled in this technology program with emphasis on databases (MySQL, SQL Server), frontend development (HTML, CSS, JavaScript), version control with Git, and software project organization and leadership.",
-        tags: ["HTML", "CSS", "JavaScript", "MySQL", "SQL Server", "Git", "Leadership"],
+        description:
+          "Currently enrolled in this technology program with emphasis on databases (MySQL, SQL Server), frontend development (HTML, CSS, JavaScript), version control with Git, and software project organization and leadership.",
+        tags: [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "MySQL",
+          "SQL Server",
+          "Git",
+          "Leadership",
+        ],
       },
       {
         role: "Systems Technician",
         company: "National Learning Service (SENA)",
         period: "2022 – 2023",
         location: "Colombia",
-        description: "Technical training in internet fundamentals, computer architecture and maintenance, hardware, technical support, and software basics.",
-        tags: ["Hardware", "PC Maintenance", "Networking", "Technical Support", "Software"],
+        description:
+          "Technical training in internet fundamentals, computer architecture and maintenance, hardware, technical support, and software basics.",
+        tags: [
+          "Hardware",
+          "PC Maintenance",
+          "Networking",
+          "Technical Support",
+          "Software",
+        ],
       },
     ],
   },
   projects: {
     title: "Projects",
     subtitle: "Some of my most representative work",
+    categories: [
+      { id: "all", label: "All" },
+      { id: "fullstack", label: "Full Stack" },
+      { id: "landing", label: "Landing Pages" },
+    ],
     cta: "View project",
     seeDetails: "See details",
     inProduction: "In production",
@@ -95,6 +155,7 @@ export const en = {
     items: [
       {
         name: "Antojapp",
+        category: "fullstack",
         desc: "A delivery platform designed to boost emerging local businesses. It connects users with new gastronomic options in their area, offering merchants an accessible alternative to sell online without high commission fees.",
         cardImage: "/antojapp/tarjetaAntojapp.png",
         icon: "bi-shop",
@@ -110,13 +171,18 @@ export const en = {
           images: [
             { src: "/antojapp/inicio.png", caption: "Home Screen" },
             { src: "/antojapp/negocios.png", caption: "Businesses List" },
-            { src: "/antojapp/detallesnegocio.png", caption: "Business Details" },
+            {
+              src: "/antojapp/detallesnegocio.png",
+              caption: "Business Details",
+            },
             { src: "/antojapp/inicio sesion.png", caption: "Login Screen" },
-            { src: "/antojapp/registro.png", caption: "Registration Screen" }
+            { src: "/antojapp/registro.png", caption: "Registration Screen" },
           ],
-          experience: "I participated in the creation of Antojapp by developing both the frontend and backend. I was in charge of structuring a user-friendly platform for both customers and local business owners. Implementing a functional delivery system from scratch allowed me to strengthen my skills in React and Node.js, as well as learn how to manage PostgreSQL databases.",
+          experience:
+            "I participated in the creation of Antojapp by developing both the frontend and backend. I was in charge of structuring a user-friendly platform for both customers and local business owners. Implementing a functional delivery system from scratch allowed me to strengthen my skills in React and Node.js, as well as learn how to manage PostgreSQL databases.",
           why: "My motivation to build this was because most people tend to buy from already well-known places, without giving beginners a chance since they lack visibility and capacity to make themselves known. My intention with this system is to help users and business owners coordinate and align with people's tastes, ultimately supporting local commerce.",
-          techNotes: "The platform connects a React frontend with a Node.js and Express backend, using PostgreSQL to manage users, businesses, and orders efficiently.",
+          techNotes:
+            "The platform connects a React frontend with a Node.js and Express backend, using PostgreSQL to manage users, businesses, and orders efficiently.",
           challenges: [
             {
               icon: "bi-shield-lock",
@@ -135,32 +201,56 @@ export const en = {
       },
       {
         name: "Parksmart",
+        category: "fullstack",
         desc: "It is an automated system for the SENA parking lot, controlling the entry and exit of vehicles. It allows guards to register access using a QR code, which is generated individually for each user and has an exclusive registry for SENA users.",
         cardImage: "/screenshots/tarjetaParksmart.jpeg",
         icon: "bi-p-circle",
         link: "https://parksmart.vercel.app/",
         techs: [
-          { name: "HTML5",      slug: "html5",      color: "#E34F26" },
-          { name: "CSS3",       slug: "css",        color: "#1572B6" },
+          { name: "HTML5", slug: "html5", color: "#E34F26" },
+          { name: "CSS3", slug: "css", color: "#1572B6" },
           { name: "JavaScript", slug: "javascript", color: "#F7DF1E" },
-          { name: "Node.js",    slug: "node.js",    color: "#339933" },
-          { name: "Express",    slug: "express",    color: "#000000" },
+          { name: "Node.js", slug: "node.js", color: "#339933" },
+          { name: "Express", slug: "express", color: "#000000" },
           { name: "PostgreSQL", slug: "postgresql", color: "#336791" },
         ],
         details: {
           images: [
-            { src: "/screenshots/login.webp",            caption: "Login screen" },
-            { src: "/screenshots/panel-usuario.webp",    caption: "User dashboard screen" },
-            { src: "/screenshots/mivehiculo.webp",       caption: "My Vehicle screen for users" },
-            { src: "/screenshots/historialusuario.webp", caption: "User history screen" },
-            { src: "/screenshots/panel-operario.webp",   caption: "Operator panel screen" },
-            { src: "/screenshots/scanner-operario.webp", caption: "QR scanning screen" },
-            { src: "/screenshots/panel-superadmin.webp", caption: "Super admin panel screen" },
-            { src: "/screenshots/panel-analisis.webp",   caption: "Analytics panel screen" },
+            { src: "/screenshots/login.webp", caption: "Login screen" },
+            {
+              src: "/screenshots/panel-usuario.webp",
+              caption: "User dashboard screen",
+            },
+            {
+              src: "/screenshots/mivehiculo.webp",
+              caption: "My Vehicle screen for users",
+            },
+            {
+              src: "/screenshots/historialusuario.webp",
+              caption: "User history screen",
+            },
+            {
+              src: "/screenshots/panel-operario.webp",
+              caption: "Operator panel screen",
+            },
+            {
+              src: "/screenshots/scanner-operario.webp",
+              caption: "QR scanning screen",
+            },
+            {
+              src: "/screenshots/panel-superadmin.webp",
+              caption: "Super admin panel screen",
+            },
+            {
+              src: "/screenshots/panel-analisis.webp",
+              caption: "Analytics panel screen",
+            },
           ],
-          experience: "I built Parksmart as an institutional project for the institution where I completed my studies as a Technologist — the National Learning Service (SENA). It was my first experience building a complete fullstack system, from database design to the user interface. I learned a great deal about QR authentication, session management, and cloud deployment.",
+          experience:
+            "I built Parksmart as an institutional project for the institution where I completed my studies as a Technologist — the National Learning Service (SENA). It was my first experience building a complete fullstack system, from database design to the user interface. I learned a great deal about QR authentication, session management, and cloud deployment.",
           why: "The institution's parking lot had no digital system to record vehicle entries and exits. Guards would hand out physical tokens to students, which did not fully guarantee the security of their bicycles. Parksmart was created to digitize that process and add greater security when entering and leaving the parking lot.",
-          techNotes: "I chose Node.js + Express for the backend due to its ecosystem and the ease of integrating QR generation libraries. PostgreSQL was the natural choice for managing the relational database of users and access records. The frontend was built in plain HTML/CSS/JS to keep things simple and compatible.",
+          techNotes:
+            "I chose Node.js + Express for the backend due to its ecosystem and the ease of integrating QR generation libraries. PostgreSQL was the natural choice for managing the relational database of users and access records. The frontend was built in plain HTML/CSS/JS to keep things simple and compatible.",
           challenges: [
             {
               icon: "bi-shield-lock",
@@ -181,6 +271,26 @@ export const en = {
               desc: "Setting up the deployment on Vercel (frontend) and managing database environment variables in production was an important learning process about security and basic CI/CD.",
             },
           ],
+        },
+      },
+      {
+        name: "Landing Page (Coming Soon)",
+        category: "landing",
+        desc: "Landing page description. (Space to add text).",
+        cardImage: "",
+        icon: "bi-layout-text-window",
+        link: "#",
+        techs: [
+          { name: "React", slug: "react", color: "#61DAFB" },
+          { name: "JavaScript", slug: "javascript", color: "#F7DF1E" },
+          { name: "CSS3", slug: "css", color: "#1572B6" },
+        ],
+        details: {
+          images: [],
+          experience: "Experience building the landing page. (Space to add text).",
+          why: "Motivation for this landing page. (Space to add text).",
+          techNotes: "Technical notes. (Space to add text).",
+          challenges: [],
         },
       },
     ],
