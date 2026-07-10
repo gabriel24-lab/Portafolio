@@ -155,7 +155,7 @@ export const es = {
         name: "Antojapp",
         category: "fullstack",
         desc: "Plataforma de delivery diseñada para impulsar negocios locales emergentes. Conecta a los usuarios con nuevas opciones gastronómicas en su zona, ofreciendo a los comercios una alternativa accesible para vender en línea sin altas comisiones.",
-        cardImage: "/antojapp/tarjetaAntojapp.png", 
+        cardImage: "/antojapp/tarjetaAntojapp.png",
         icon: "bi-shop",
         link: "https://antojapp.pages.dev/",
         techs: [
@@ -283,8 +283,7 @@ export const es = {
         link: "https://gabriel-mejia-electricista.vercel.app/",
         techs: [
           { name: "React", slug: "react", color: "#61DAFB" },
-          { name: "JavaScript", slug: "javascript", color: "#F7DF1E" },
-          { name: "CSS3", slug: "css", color: "#1572B6" },
+          { name: "Tailwind CSS", slug: "tailwindcss", color: "#1572B6" },
         ],
       },
     ],

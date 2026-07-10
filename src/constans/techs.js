@@ -5,6 +5,7 @@
   { name: "JavaScript", slug: "javascript", color: "#F7DF1E", focus: true },
   { name: "React", slug: "react", color: "#61DAFB", focus: true },
   { name: "MySQL", slug: "mysql", color: "#00758F", focus: true },
+  { name: "Tailwind CSS", slug: "tailwindcss", color: "#06B6D4", focus: true },
   {
     name: "SQL Server",
     slug: "microsoftsqlserver",

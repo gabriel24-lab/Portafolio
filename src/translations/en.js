@@ -132,8 +132,6 @@ export const en = {
     cta: "View project",
     seeDetails: "See details",
     inProduction: "In production",
-    hoverHint: "Hover to see the stack",
-    tapHint: "Tap to see the stack",
     techStack: "Tech stack",
     modal: {
       projectLabel: "PROJECT",
@@ -276,18 +274,18 @@ export const en = {
       {
         name: "Landing Page (Coming Soon)",
         category: "landing",
-        desc: "Landing page description. (Space to add text).",
-        cardImage: "",
+        desc: "Landing page designed to promote industrial electrical services, focused on conveying trust and expertise while facilitating contact with potential clients.",
+        cardImage: "/landing/inicio.png",
         icon: "bi-layout-text-window",
-        link: "#",
+        link: "https://gabriel-mejia-electricista.vercel.app/",
         techs: [
           { name: "React", slug: "react", color: "#61DAFB" },
-          { name: "JavaScript", slug: "javascript", color: "#F7DF1E" },
-          { name: "CSS3", slug: "css", color: "#1572B6" },
+          { name: "Tailwind CSS", slug: "tailwindcss", color: "#1572B6" },
         ],
         details: {
           images: [],
-          experience: "Experience building the landing page. (Space to add text).",
+          experience:
+            "Experience building the landing page. (Space to add text).",
           why: "Motivation for this landing page. (Space to add text).",
           techNotes: "Technical notes. (Space to add text).",
           challenges: [],
