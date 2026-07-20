@@ -274,6 +274,55 @@ export const es = {
           ],
         },
       },
+
+      {
+        name: "Monu",
+        category: "fullstack",
+        desc: "Monu es una aplicación web de finanzas personales diseñada para ayudar a los usuarios a gestionar sus ingresos, gastos y presupuestos de forma sencilla. Permite visualizar la situación financiera mediante estadísticas y reportes, facilitando una mejor toma de decisiones y el control del dinero.",
+        cardImage: "/Monu/portada.webp",
+        icon: "bi-cash-stack",
+        link: "https://monu-delta.vercel.app/",
+        techs: [
+          { name: "React", slug: "react", color: "#61DAFB" },
+          { name: "Tailwind CSS", slug: "tailwindcss", color: "#1572B6" },
+          { name: "Node.js", slug: "node.js", color: "#339933" },
+          { name: "Express", slug: "express", color: "#000000" },
+          { name: "MongoDB", slug: "mongodb", color: "#47A248" },
+        ],
+        details: {
+          images: [
+            { src: "/Monu/inicio.webp", caption: "Pantalla de Inicio" },
+            { src: "/Monu/recursos.webp", caption: "Recursos financieros" },
+            { src: "/Monu/login.webp", caption: "Login" },
+            {
+              src: "/Monu/dentro.webp",
+              caption: "Pantalla dentro del sistema",
+            },
+            { src: "/Monu/graficas.webp", caption: "Reportes y Estadísticas" },
+            { src: "/Monu/consejos.webp", caption: "Consejos financieros" },
+          ],
+          experience:
+            "Desarrollé Monu como un proyecto personal para mejorar mis habilidades en desarrollo full stack. Implementé un sistema de autenticación, gestión de usuarios, y CRUD para ingresos y gastos. Aprendí a manejar la comunicación entre el frontend en React y el backend en Node.js con Express, así como a estructurar una base de datos NoSQL en MongoDB.",
+          why: "La motivación detrás de Monu fue crear una herramienta que ayudara a las personas a tener un mejor control de sus finanzas personales, algo que considero esencial para la estabilidad económica y la planificación a futuro.",
+          techNotes:
+            "El frontend se construyó con React y Tailwind CSS para una experiencia de usuario fluida y responsiva. El backend utiliza Node.js y Express para manejar las solicitudes y la lógica de negocio, mientras que MongoDB se encarga del almacenamiento de datos de manera flexible.",
+          challenges: [
+            {
+              icon: "bi-shield-lock",
+              color: "#6c8eff",
+              title: "Seguridad y autenticación",
+              desc: "Implementar un sistema seguro de autenticación y autorización fue un desafío, asegurando que los datos financieros de los usuarios estuvieran protegidos mediante hashing de contraseñas y tokens JWT.",
+            },
+            {
+              icon: "bi-cloud-arrow-up",
+              color: "#339933",
+              title: "Integración de MongoDB Atlas",
+              desc: "El mayor reto fue integrar MongoDB Atlas con el backend. Al ser mi primera experiencia utilizando una base de datos en la nube, enfrenté dificultades con la configuración de la conexión, las direcciones IP y los permisos de usuario, lo que me permitió fortalecer mis conocimientos en este tipo de entornos.",
+            },
+          ],
+        },
+      },
+
       {
         name: "Tecnico Gabriel Mejia",
         category: "landing",

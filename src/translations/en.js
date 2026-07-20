@@ -271,6 +271,55 @@ export const en = {
           ],
         },
       },
+
+      {
+        name: "Monu",
+        category: "fullstack",
+        desc: "Monu is a personal finance web application designed to help users easily manage their income, expenses, and budgets. It provides financial insights through reports and statistics, making it easier to track spending and make informed financial decisions.",
+        cardImage: "/Monu/portada.webp",
+        icon: "bi-cash-stack",
+        link: "https://monu-delta.vercel.app/",
+        techs: [
+          { name: "React", slug: "react", color: "#61DAFB" },
+          { name: "Tailwind CSS", slug: "tailwindcss", color: "#1572B6" },
+          { name: "Node.js", slug: "node.js", color: "#339933" },
+          { name: "Express", slug: "express", color: "#000000" },
+          { name: "MongoDB", slug: "mongodb", color: "#47A248" },
+        ],
+        details: {
+          images: [
+            { src: "/Monu/inicio.webp", caption: "Home Screen" },
+            { src: "/Monu/recursos.webp", caption: "Financial Resources" },
+            { src: "/Monu/login.webp", caption: "Login" },
+            {
+              src: "/Monu/dentro.webp",
+              caption: "Dashboard",
+            },
+            { src: "/Monu/graficas.webp", caption: "Reports & Analytics" },
+            { src: "/Monu/consejos.webp", caption: "Financial Tips" },
+          ],
+          experience:
+            "I developed Monu as a personal project to strengthen my full stack development skills. I implemented user authentication, user management, and CRUD operations for income and expenses. Throughout the project, I gained experience connecting a React frontend with a Node.js and Express backend, while designing and managing a NoSQL database with MongoDB.",
+          why: "The idea behind Monu was to create a tool that helps people gain better control over their personal finances, something I believe is essential for financial stability and long-term planning.",
+          techNotes:
+            "The frontend was built with React and Tailwind CSS to provide a modern, responsive user experience. The backend uses Node.js and Express to handle business logic and API requests, while MongoDB provides a flexible and scalable NoSQL database.",
+          challenges: [
+            {
+              icon: "bi-shield-lock",
+              color: "#6c8eff",
+              title: "Security & Authentication",
+              desc: "Implementing a secure authentication and authorization system was a key challenge. User financial data is protected through password hashing and JWT-based authentication.",
+            },
+            {
+              icon: "bi-cloud-arrow-up",
+              color: "#339933",
+              title: "MongoDB Atlas Integration",
+              desc: "One of the biggest challenges was integrating MongoDB Atlas with the backend. Since it was my first time working with a cloud-hosted database, I faced issues related to connection settings, IP whitelisting, and user permissions, which helped me gain valuable experience with cloud database deployment.",
+            },
+          ],
+        },
+      },
+
       {
         name: "Landing Page (Coming Soon)",
         category: "landing",
